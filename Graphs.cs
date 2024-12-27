@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Mazes
+namespace Graph
 {
     /***********************************************************
      * a Graph Implementation for non null types.

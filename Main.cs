@@ -1,5 +1,5 @@
 ﻿
-namespace Mazes
+namespace Graph
 {
     /***********************************************************
      * a wrapper class for our main function to test our graphs and algorithms.

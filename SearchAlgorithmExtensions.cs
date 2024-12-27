@@ -1,5 +1,8 @@
 ﻿
-namespace Mazes
+using System.Linq;
+using System.Numerics;
+
+namespace Graph
 {
     /***********************************************************
      * An extension class for Graph that implements searching algorithms as well as their complementary paths.
@@ -207,7 +210,6 @@ namespace Mazes
             {
                 throw new ArgumentNullException(nameof(graph));
             }
-            int count = graph.Count();
 
             Dictionary<T, uint> distances = new Dictionary<T, uint>();
             foreach (var node in graph)
@@ -280,18 +282,128 @@ namespace Mazes
             }
         }
 
-        public static void AStar<T>(this WeightedGraph<T> graph, T start, T end) where T : notnull {
-            if (graph is null)
-            {
-                throw new ArgumentNullException(nameof(graph));
-            }
+        public static double EuclidianDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T>
+        {
+            T xDiff = x1 - x2;
+            T yDiff = y1 - y2;
+            return Math.Sqrt(Convert.ToDouble(xDiff * xDiff) + Convert.ToDouble(yDiff * yDiff));
         }
 
-        public static void AStar<T>(this Graph<T> graph, T start, T end) where T : notnull {
+        public static double ManhattanDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T> {
+            return Convert.ToDouble(Math.Abs(Convert.ToDecimal(x1 - x2)) + Math.Abs(Convert.ToDecimal(y1 - y2)));
+        }
+
+        public static double DiagonalDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T>
+        {
+            var dx = Convert.ToDouble(Math.Abs(Convert.ToDecimal(x1 - x2)));
+            var dy = Convert.ToDouble(Math.Abs(Convert.ToDecimal(y1 - y2)));
+
+            return (dx + dy) + (Math.Sqrt(2) - 2) * Math.Min(dx, dy);
+        }
+
+        /**
+         * Implementation of the A* algorithm for weighted graphs
+         * @see AStar<T>(this Mazes.CoordinateGraph<T> graph, Mazes.Coordinate2D<T> start, Mazes.Coordinate2D<T> end)
+         * 
+         * A* is an evolution of Dijkstras algorithm, implementing a heuristic that is targeted towards the end goal, while Dijkstra's will get the shortest path for all possible nodes.
+         * @see Dijkstra<T>(this NonNegativeWeightedGraph<T> graph, T start, T end)
+         * 
+         * The heuristic should be taken into account based on how we are able to "travel" around the nodes. For example: you can't traverse through walls, and some places you can only travel in 4 directions (mazes)
+         * @param graph since this is an extension, graph would be where we call this function to run on that specific graph instance.
+         * @param start the starting vertex that we will begin the search from.
+         * @param end the ending vertex that we are looking for.
+         * @returns a list format of the found path between start and end, if any
+         */
+        public static List<Mazes.Coordinate2D<T>> AStar<T>(this Mazes.NonNegativeWeightedCoordinateGraph<T> graph, Mazes.Coordinate2D<T> start, Mazes.Coordinate2D<T> end, Func<T, T, T, T, double> heuristic) where T : INumber<T> {
             if (graph is null)
             {
                 throw new ArgumentNullException(nameof(graph));
             }
+            Dictionary<Mazes.Coordinate2D<T>, uint> distances = new Dictionary<Mazes.Coordinate2D<T>, uint>();
+            foreach (var node in graph)
+            {
+                distances[node] = uint.MaxValue; // Logical infinity
+            }
+            if (!distances.ContainsKey(end))
+            {
+                return new List<Mazes.Coordinate2D<T>>(); // Get out before we waste time, end doesn't even exist in the graph
+            }
+            ISet<Mazes.Coordinate2D<T>> found = new HashSet<Mazes.Coordinate2D<T>>(); // What Nodes we found
+            PriorityQueue<Mazes.Coordinate2D<T>, uint> waiting = new PriorityQueue<Mazes.Coordinate2D<T>, uint>(); // Waiting queue that we will pop as we can, the given weight determines order
+            Dictionary<Mazes.Coordinate2D<T>, Mazes.Coordinate2D<T>> parent = new Dictionary<Mazes.Coordinate2D<T>, Mazes.Coordinate2D<T>>(); // How we will trace back from a node for the path
+
+            //First step: Add start
+            found.Add(start);
+            waiting.Enqueue(start, 0);
+            parent.Add(start, default);
+
+            // Distance Building Step: Go through every node that we can possibly reach from start, even if we find end
+            while (waiting.Count > 0)
+            {
+                var v = waiting.Dequeue();
+                if (v == end)
+                {
+                    break;
+                }
+                var neighbors = graph.getNeighbors(v);
+                for (int i = 0; i < neighbors.Count; i++)
+                {
+                    var neighbor = neighbors[i];
+                    if (neighbor.Value + distances[v] < distances[neighbor.Key])
+                    {
+                        parent.Add(neighbor.Key, v); // If this would actually be the shortest path
+                        distances[neighbor.Key] = neighbor.Value + distances[v]; // updating the distances
+                    }
+                    if (!found.Contains(neighbor.Key))
+                    {
+                        found.Add(neighbor.Key);
+                        // Really where the main difference starts: We add the heuristic to the value in waiting to change the priority so we focus on getting to the end faster
+                        waiting.Enqueue(neighbor.Key, neighbor.Value + Convert.ToUInt32(heuristic(neighbor.Key.x, neighbor.Key.y, end.x, end.y)));
+                        parent.Add(neighbor.Key, v);
+                    }
+                }
+            }
+
+            // Pathing step: Now that we have the distances, return the path if there is one.
+            if (distances[end] == uint.MaxValue)
+            {
+                return new List<Mazes.Coordinate2D<T>>(); // Empty list: end is completely unreachable
+            }
+            List<Mazes.Coordinate2D<T>> ans = new List<Mazes.Coordinate2D<T>>();
+            ans.Add(end);
+            Mazes.Coordinate2D<T> u = parent[end];
+            while (!u.Equals(default))
+            {
+                ans.Add(u);
+                u = parent[u];
+            }
+            ans.Reverse();
+            return ans;
+        }
+
+        /**
+         * Implementation of the A* algorithm for non-weighted graphs
+         * @see AStar<T>(this WeightedGraph<T> graph, T start, T end)
+         * 
+         * A* is an evolution of Dijkstras algorithm, implementing a heuristic that is targeted towards the end goal, while Dijkstra's will get the shortest path for all possible nodes.
+         * @see Dijkstra<T>(this NonNegativeWeightedGraph<T> graph, T start, T end)
+         * We can use this algorithm with non-weighted graphs, since we are just calculating movement from A to B, so every "move" is the same as adding a distance of 1 in Dijkstra.
+         * 
+         * The heuristic should be taken into account based on how we are able to "travel" around the nodes. For example: you can't traverse through walls, and some places you can only travel in 4 directions (mazes)
+         * @param graph since this is an extension, graph would be where we call this function to run on that specific graph instance.
+         * @param start the starting vertex that we will begin the search from.
+         * @param end the ending vertex that we are looking for.
+         * @returns a list format of the found path between start and end, if any
+         */
+        public static List<Mazes.Coordinate2D<T>> AStar<T>(this Mazes.CoordinateGraph<T> graph, Mazes.Coordinate2D<T> start, Mazes.Coordinate2D<T> end) where T : INumber<T> {
+            if (graph is null)
+            {
+                throw new ArgumentNullException(nameof(graph));
+            }
+
+            List<Mazes.Coordinate2D<T>> ans = new List<Mazes.Coordinate2D<T>>();
+
+            return ans;
         }
     }
 }
