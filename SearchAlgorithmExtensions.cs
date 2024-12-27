@@ -183,6 +183,29 @@ namespace Graph
         }
     }
 
+    public static class DistanceHeuristicAlgorithms
+    {
+
+        public static double EuclidianDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T>
+        {
+            T xDiff = x1 - x2;
+            T yDiff = y1 - y2;
+            return Math.Sqrt(Convert.ToDouble(xDiff * xDiff) + Convert.ToDouble(yDiff * yDiff));
+        }
+
+        public static double ManhattanDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T>
+        {
+            return Convert.ToDouble(Math.Abs(Convert.ToDecimal(x1 - x2)) + Math.Abs(Convert.ToDecimal(y1 - y2)));
+        }
+
+        public static double DiagonalDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T>
+        {
+            var dx = Convert.ToDouble(Math.Abs(Convert.ToDecimal(x1 - x2)));
+            var dy = Convert.ToDouble(Math.Abs(Convert.ToDecimal(y1 - y2)));
+
+            return (dx + dy) + (Math.Sqrt(2) - 2) * Math.Min(dx, dy);
+        }
+    }
 
     /***********************************************************
      * An extension class for WeightedGraph that implements greedy algorithms as well as their complementary paths.
@@ -190,6 +213,29 @@ namespace Graph
      ***********************************************************/
     public static class GreedyAlgorithmExtensions
     {
+        /**
+         * Path function that will give a list of vertices to visit from start to end, given a start will not have a parent in the dictionary
+         * 
+         * This is used in every shortest path function to give us back the path
+         * 
+         * @returns a list of each visited vertex from start to end
+         * @param parent dictionary of each value and their corresponding parent, where the start will have a default value for null
+         * @param the end point we want to reach
+         **/
+        internal static List<T> Path<T>(Dictionary<T, T> parent, T end)
+        {
+            List<T> ans = new List<T>();
+            ans.Add(end);
+            T u = parent[end];
+            while (!u.Equals(default))
+            {
+                ans.Add(u);
+                u = parent[u];
+            }
+            ans.Reverse();
+            return ans;
+        }
+
         /**
          * Implementation of Dijkstra's algorithm to return the shortest path from start to end.
          * 
@@ -216,10 +262,12 @@ namespace Graph
             {
                 distances[node] = uint.MaxValue; // Logical infinity
             }
-            if (!distances.ContainsKey(end))
+            if (!distances.ContainsKey(end) || !distances.ContainsKey(start))
             {
                 return new List<T>(); // Get out before we waste time, end doesn't even exist in the graph
             }
+
+            distances[start] = 0;
             ISet<T> found = new HashSet<T>(); // What Nodes we found
             PriorityQueue<T, uint> waiting = new PriorityQueue<T, uint>(); // Waiting queue that we will pop as we can, the given weight determines order
             Dictionary<T, T> parent = new Dictionary<T, T>(); // How we will trace back from a node for the path
@@ -256,53 +304,241 @@ namespace Graph
             {
                 return new List<T>(); // Empty list: end is completely unreachable
             }
-            List<T> ans = new List<T>();
-            ans.Add(end);
-            T u = parent[end];
-            while (!u.Equals(default))
+            return Path(parent, end);
+        }
+
+
+        /**
+         * Implementation of Dijkstra's algorithm to return the shortest path from start to end.
+         * 
+         * This is not the most efficient algorithm, nor the most efficient implementation of the algorithm. The main issue is that for any start and end we will have to do the distance mapping step again.
+         * One way to make this more time efficient for larger programs is to encapsulate a cache class.
+         * Whenever a start is first called to be used in Dijkstras, we save the parent map so that from any endpoint we just have to follow back the trace.
+         * This would be better in the long run, as long as any later addEdge or addVertex call either deletes this cache or updates it.
+         * 
+         * An important note: Dijkstras does not work with negative weights, so we have to enforce the weights being non-negative
+         * @see Graph
+         * @param graph since this is an extension, graph would be where we call this function to run on that specific graph instance.
+         * @param start the starting vertex that we will begin the search from.
+         * @param end the ending vertex that we are looking for.
+         * @returns a list format of the found path between start and end, if any
+         */
+        public static List<T> Dijkstra<T>(this Graph<T> graph, T start, T end) where T : notnull {
+            if (graph is null)
             {
-                ans.Add(u);
-                u = parent[u];
+                throw new ArgumentNullException(nameof(graph));
             }
+
+            Dictionary<T, uint> distances = new Dictionary<T, uint>();
+            foreach (var node in graph)
+            {
+                distances[node] = uint.MaxValue; // Logical infinity
+            }
+            if (!distances.ContainsKey(end) || !distances.ContainsKey(start))
+            {
+                return new List<T>(); // Get out before we waste time, end doesn't even exist in the graph
+            }
+
+            distances[start] = 0;
+            ISet<T> found = new HashSet<T>(); // What Nodes we found
+            PriorityQueue<T, uint> waiting = new PriorityQueue<T, uint>(); // Waiting queue that we will pop as we can, the given weight determines order
+            Dictionary<T, T> parent = new Dictionary<T, T>(); // How we will trace back from a node for the path
+
+            //First step: Add start
+            found.Add(start);
+            waiting.Enqueue(start, 0);
+            parent.Add(start, default);
+
+            // Distance Building Step: Go through every node that we can possibly reach from start, even if we find end
+            while (waiting.Count > 0)
+            {
+                T v = waiting.Dequeue();
+                var neighbors = graph.getNeighbors(v);
+                for (int i = 0; i < neighbors.Count; i++)
+                {
+                    var neighbor = neighbors[i];
+                    if (1 + distances[v] < distances[neighbor])
+                    {
+                        parent.Add(neighbor, v); // If this would actually be the shortest path
+                        distances[neighbor] = 1 + distances[v]; // updating the distances
+                    }
+                    if (!found.Contains(neighbor))
+                    {
+                        found.Add(neighbor);
+                        waiting.Enqueue(neighbor, distances[neighbor]);
+                        parent.Add(neighbor, v);
+                    }
+                }
+            }
+
+            // Pathing step: Now that we have the distances, return the path if there is one.
+            if (distances[end] == uint.MaxValue)
+            {
+                return new List<T>(); // Empty list: end is completely unreachable
+            }
+            return Path(parent, end);
+        }
+
+        /**
+         * Implementation of the Bellman-Ford algorithm to return the shortest path from start to end.
+         * 
+         * This will go through every possible lowest option in a greedy fashion, indiscriminately finding out the shortest possible route
+         * This is not the fastest option, but will guarantee the lowest possible finding
+         * Since the loop is locked into only how many vertices there are, we can use negative weights
+         * 
+         * @see WeightedGraph
+         * @param graph since this is an extension, graph would be where we call this function to run on that specific graph instance.
+         * @param start the starting vertex that we will begin the search from.
+         * @param end the ending vertex that we are looking for.
+         * @returns a list format of the found path between start and end, if any
+         */
+        public static List<T> BellmanFord<T>(this WeightedGraph<T> graph, T start, T end) where T : notnull {
+            if (graph is null)
+            {
+                throw new ArgumentNullException(nameof(graph));
+            }
+
+            Dictionary<T, int> distances = new Dictionary<T, int>();
+            foreach (var node in graph)
+            {
+                distances[node] = int.MaxValue; // Logical infinity
+            }
+            if (!distances.ContainsKey(end) || !distances.ContainsKey(start))
+            {
+                return new List<T>(); // Get out before we waste time, end doesn't even exist in the graph
+            }
+
+            distances[start] = 0;
+            Dictionary<T, T> parent = new Dictionary<T, T>(); // How we will trace back from a node for the path
+            parent.Add(start, default);
+
+            for (int i = 0; i < graph.Count(); ++i)
+            {
+                foreach(var node in graph)
+                {
+                    foreach(var neighbor in graph.getNeighbors(node))
+                    {
+                        if (neighbor.Value + distances[node] < distances[neighbor.Key])
+                        {
+                            distances[neighbor.Key] = neighbor.Value + distances[node];
+                            parent.Add(neighbor.Key, node);
+                        }
+                    }
+                }
+            }
+
+            // Pathing step: Now that we have the distances, return the path if there is one.
+            if (distances[end] == uint.MaxValue)
+            {
+                return new List<T>(); // Empty list: end is completely unreachable
+            }
+            return Path(parent, end);
+        }
+
+        internal static List<List<int>> GetAdjacencyMatrix<T>(WeightedGraph<T> graph)
+        {
+            List<List<int>> ans = new List<List<int>> ();
+            for (int i = 0; i < graph.Count(); i++)
+            {
+                var neighbors = graph.getNeighbors(graph.ElementAt(i));
+                ans.Add(new List<int> ());
+                for (int j = 0; j < graph.Count(); j++)
+                {
+                    if (i == j)
+                    {
+                        ans[i].Add(int.MinValue);
+                        continue;
+                    }
+                    bool found = false;
+                    foreach (var neighbor in neighbors)
+                    {
+                        if (neighbor.Key.Equals(graph.ElementAt(j)))
+                        {
+                            found = true;
+                            ans[i].Add(neighbor.Value);
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        ans[i].Add(int.MaxValue); // logical infinity
+                    }
+                }
+            }
+            return ans;
+        }
+
+        /**
+         * Implementation of the Floyd-Warshall Algorithm for Weighted Graphs
+         * 
+         * This algorithm is not efficient and varies heavily from the others by requiring the be used in terms of the adjacency matrix. 
+         * Given an adjacency matrix, we go through N^3 times over vertices to get the smallest value between 2 vertices. After this, we trace back to start from our end point by grabbing the lowest possible value for that column in the matrix.
+         * 
+         * @see WeightedGraph
+         * @param graph since this is an extension, graph would be where we call this function to run on that specific graph instance.
+         * @param start the starting vertex that we will begin the search from.
+         * @param end the ending vertex that we are looking for.
+         * @returns a list format of the found path between start and end, if any
+         */
+        public static List<T> FloydWarshall<T>(this WeightedGraph<T> graph, T start, T end) where T : notnull {
+            if (graph is null)
+            {
+                throw new ArgumentNullException(nameof(graph));
+            }
+            Dictionary<T, T> parent = new Dictionary<T, T>(); // How we will trace back from a node for the path
+            parent.Add(start, default);
+            var asMatrix = GetAdjacencyMatrix(graph);
+            for (int k = 0; k < asMatrix.Count(); k++)
+            {
+                for (int i = 0; i < asMatrix.Count(); i++)
+                {
+                    for (int j = 0; j < asMatrix.Count(); j++)
+                    {
+                        if (asMatrix[i][k] + asMatrix[k][j] < asMatrix[i][j])
+                        {
+                            asMatrix[i][j] = asMatrix[i][k] + asMatrix[k][j];
+                        }
+                    }
+                }
+            }
+
+            List<T> ans = new List<T>();
+            T curNode = end;
+            while (!curNode.Equals(start))
+            {
+                bool foundSomething = false;
+                for (int i = 0; i < asMatrix.Count(); i++)
+                {
+                    if (graph.ElementAt(i).Equals(curNode))
+                    {
+                        foundSomething = true;
+                        ans.Add(curNode);
+                        //find the min
+                        int min = int.MaxValue;
+                        int idx = 0;
+                        for (int j = 0; j < asMatrix[i].Count(); ++j)
+                        {
+                            if (asMatrix[i][j] > int.MinValue && asMatrix[i][j] < min)
+                            {
+                                min = asMatrix[i][j];
+                                idx = j;
+                            }
+                        }
+                        curNode = graph.ElementAt(asMatrix[i][idx]);
+                    }
+                    if (!foundSomething)
+                    {
+                        return new List<T>();
+                    }
+                }
+            }
+            ans.Add(start);
             ans.Reverse();
             return ans;
         }
 
-        public static void BellmanFord<T>(this WeightedGraph<T> graph, T start, T end) where T : notnull {
-            if (graph is null)
-            {
-                throw new ArgumentNullException(nameof(graph));
-            }
-        }
-
-        public static void FloydWarshall<T>(this WeightedGraph<T> graph, T start, T end) where T : notnull {
-            if (graph is null)
-            {
-                throw new ArgumentNullException(nameof(graph));
-            }
-        }
-
-        public static double EuclidianDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T>
-        {
-            T xDiff = x1 - x2;
-            T yDiff = y1 - y2;
-            return Math.Sqrt(Convert.ToDouble(xDiff * xDiff) + Convert.ToDouble(yDiff * yDiff));
-        }
-
-        public static double ManhattanDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T> {
-            return Convert.ToDouble(Math.Abs(Convert.ToDecimal(x1 - x2)) + Math.Abs(Convert.ToDecimal(y1 - y2)));
-        }
-
-        public static double DiagonalDistance<T>(T x1, T y1, T x2, T y2) where T : INumber<T>
-        {
-            var dx = Convert.ToDouble(Math.Abs(Convert.ToDecimal(x1 - x2)));
-            var dy = Convert.ToDouble(Math.Abs(Convert.ToDecimal(y1 - y2)));
-
-            return (dx + dy) + (Math.Sqrt(2) - 2) * Math.Min(dx, dy);
-        }
-
         /**
-         * Implementation of the A* algorithm for weighted graphs
+         * Implementation of the A* algorithm for non negative weighted graphs
          * @see AStar<T>(this Mazes.CoordinateGraph<T> graph, Mazes.Coordinate2D<T> start, Mazes.Coordinate2D<T> end)
          * 
          * A* is an evolution of Dijkstras algorithm, implementing a heuristic that is targeted towards the end goal, while Dijkstra's will get the shortest path for all possible nodes.
@@ -324,10 +560,12 @@ namespace Graph
             {
                 distances[node] = uint.MaxValue; // Logical infinity
             }
-            if (!distances.ContainsKey(end))
+            if (!distances.ContainsKey(end) || !distances.ContainsKey(start))
             {
                 return new List<Mazes.Coordinate2D<T>>(); // Get out before we waste time, end doesn't even exist in the graph
             }
+
+            distances[start] = 0;
             ISet<Mazes.Coordinate2D<T>> found = new HashSet<Mazes.Coordinate2D<T>>(); // What Nodes we found
             PriorityQueue<Mazes.Coordinate2D<T>, uint> waiting = new PriorityQueue<Mazes.Coordinate2D<T>, uint>(); // Waiting queue that we will pop as we can, the given weight determines order
             Dictionary<Mazes.Coordinate2D<T>, Mazes.Coordinate2D<T>> parent = new Dictionary<Mazes.Coordinate2D<T>, Mazes.Coordinate2D<T>>(); // How we will trace back from a node for the path
@@ -369,16 +607,7 @@ namespace Graph
             {
                 return new List<Mazes.Coordinate2D<T>>(); // Empty list: end is completely unreachable
             }
-            List<Mazes.Coordinate2D<T>> ans = new List<Mazes.Coordinate2D<T>>();
-            ans.Add(end);
-            Mazes.Coordinate2D<T> u = parent[end];
-            while (!u.Equals(default))
-            {
-                ans.Add(u);
-                u = parent[u];
-            }
-            ans.Reverse();
-            return ans;
+            return Path(parent, end);
         }
 
         /**
@@ -395,15 +624,64 @@ namespace Graph
          * @param end the ending vertex that we are looking for.
          * @returns a list format of the found path between start and end, if any
          */
-        public static List<Mazes.Coordinate2D<T>> AStar<T>(this Mazes.CoordinateGraph<T> graph, Mazes.Coordinate2D<T> start, Mazes.Coordinate2D<T> end) where T : INumber<T> {
+        public static List<Mazes.Coordinate2D<T>> AStar<T>(this Mazes.CoordinateGraph<T> graph, Mazes.Coordinate2D<T> start, Mazes.Coordinate2D<T> end, Func<T, T, T, T, double> heuristic) where T : INumber<T> {
             if (graph is null)
             {
                 throw new ArgumentNullException(nameof(graph));
             }
+            Dictionary<Mazes.Coordinate2D<T>, uint> distances = new Dictionary<Mazes.Coordinate2D<T>, uint>();
+            foreach (var node in graph)
+            {
+                distances[node] = uint.MaxValue; // Logical infinity
+            }
+            if (!distances.ContainsKey(end) || !distances.ContainsKey(start))
+            {
+                return new List<Mazes.Coordinate2D<T>>(); // Get out before we waste time, end doesn't even exist in the graph
+            }
 
-            List<Mazes.Coordinate2D<T>> ans = new List<Mazes.Coordinate2D<T>>();
+            distances[start] = 0;
+            ISet<Mazes.Coordinate2D<T>> found = new HashSet<Mazes.Coordinate2D<T>>(); // What Nodes we found
+            PriorityQueue<Mazes.Coordinate2D<T>, uint> waiting = new PriorityQueue<Mazes.Coordinate2D<T>, uint>(); // Waiting queue that we will pop as we can, the given weight determines order
+            Dictionary<Mazes.Coordinate2D<T>, Mazes.Coordinate2D<T>> parent = new Dictionary<Mazes.Coordinate2D<T>, Mazes.Coordinate2D<T>>(); // How we will trace back from a node for the path
 
-            return ans;
+            //First step: Add start
+            found.Add(start);
+            waiting.Enqueue(start, 0);
+            parent.Add(start, default);
+
+            // Distance Building Step: Go through every node that we can possibly reach from start, even if we find end
+            while (waiting.Count > 0)
+            {
+                var v = waiting.Dequeue();
+                if (v == end)
+                {
+                    break;
+                }
+                var neighbors = graph.getNeighbors(v);
+                for (int i = 0; i < neighbors.Count; i++)
+                {
+                    var neighbor = neighbors[i];
+                    if (1 + distances[v] < distances[neighbor])
+                    {
+                        parent.Add(neighbor, v); // If this would actually be the shortest path
+                        distances[neighbor] = 1 + distances[v]; // updating the distances
+                    }
+                    if (!found.Contains(neighbor))
+                    {
+                        found.Add(neighbor);
+                        // Really where the main difference starts: We add the heuristic to the value in waiting to change the priority so we focus on getting to the end faster
+                        waiting.Enqueue(neighbor, 1 + Convert.ToUInt32(heuristic(neighbor.x, neighbor.y, end.x, end.y)));
+                        parent.Add(neighbor, v);
+                    }
+                }
+            }
+
+            // Pathing step: Now that we have the distances, return the path if there is one.
+            if (distances[end] == uint.MaxValue)
+            {
+                return new List<Mazes.Coordinate2D<T>>(); // Empty list: end is completely unreachable
+            }
+            return Path(parent, end);
         }
     }
 }
