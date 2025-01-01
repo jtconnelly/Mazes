@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics;
+
 namespace Graph
 {
 
@@ -10,6 +12,9 @@ namespace Graph
      ***********************************************************/
     class GraphsMain
     {     
+        /**
+         * Prints each item of a list in a simple for loop
+         */
         internal static string printList<T>(List<T> list)
         {
             string ans = "";
@@ -19,8 +24,14 @@ namespace Graph
             }
             return ans;
         }
-        static void Main()
+
+        /**
+         * Function for testing the base graph implementation and given search functions
+         * Search Functions Tested: DFSPath, BFSPath, Dijkstra
+         */
+        internal static void TestBaseGraph()
         {
+            Console.WriteLine("Regular Graph Implementation:");
             Graph<char> graph = new Graph<char>();
             graph.AddVertex('a');
             graph.AddVertex('b');
@@ -33,9 +44,32 @@ namespace Graph
             graph.AddEdge('b', 'd');
             graph.AddEdge('d', 'c');
             graph.AddEdge('d', 'e');
-            Console.WriteLine("DFSPath: " + printList(graph.DFSPath('a', 'e')));
-            Console.WriteLine("BFSPath: " + printList(graph.BFSPath('a', 'e')));
-            Console.WriteLine("Dijkstra: " + printList(graph.Dijkstra('a', 'e')));
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            var path = graph.DFSPath('a', 'e');
+            stopwatch.Stop();
+            Console.WriteLine("\tDFSPath: ");
+            Console.WriteLine("\t\tTime: " + stopwatch);
+            Console.WriteLine("\t\tPath: " + printList(path));
+
+            stopwatch.Restart();
+            path = graph.BFSPath('a', 'e');
+            stopwatch.Stop();
+            Console.WriteLine("\tBFSPath: ");
+            Console.WriteLine("\t\tTime: " + stopwatch);
+            Console.WriteLine("\t\tPath: " + printList(path));
+
+            stopwatch.Restart();
+            path = graph.Dijkstra('a', 'e');
+            stopwatch.Stop();
+            Console.WriteLine("\tDijkstra: ");
+            Console.WriteLine("\t\tTime: " + stopwatch);
+            Console.WriteLine("\t\tPath: " + printList(path));
+        }
+        static void Main()
+        {
+            TestBaseGraph();
         }
     }
 }
