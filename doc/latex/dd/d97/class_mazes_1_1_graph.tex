@@ -1,0 +1,129 @@
+\doxysection{Mazes.\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_mazes_1_1_graph}{}\label{class_mazes_1_1_graph}\index{Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}}
+
+
+a \doxylink{class_mazes_1_1_graph}{Graph} Implementation for non null types.  
+
+
+Inheritance diagram for Mazes.\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{dd/d97/class_mazes_1_1_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mazes_1_1_graph_a2608f901678f9dd6e7c2ba18921d2521}{Graph}} ()
+\item 
+void \mbox{\hyperlink{class_mazes_1_1_graph_ad81f981afade2dc7a4261a4bfffb8ecb}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mazes_1_1_graph_a13f973630468db5b506a3c9586bc0af9}{Add\+Edge}} (T u, T v)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+List$<$ T $>$ \mbox{\hyperlink{class_mazes_1_1_graph_a2844965731fe2ea9cf1fbb82e74d015d}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\item 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_mazes_1_1_graph_a008b637335fb96f44806b62351e67d57}{Get\+Enumerator}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ T, List$<$ T $>$ $>$ \mbox{\hyperlink{class_mazes_1_1_graph_a5c1fde20917c06b919f92b9dc0b6dc87}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a \doxylink{class_mazes_1_1_graph}{Graph} Implementation for non null types. 
+
+A graph is a set of vertices with edges in between. Given this relationship, we can create a structure that can later be visualized and implemented for other purposes. Some Uses would be \doxylink{namespace_mazes}{Mazes}\+: Both Generation and Solving, as well as relational pathing between 2 objects. Implements IEnumerable in order to be able to loop through the vertices. \begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mazes_1_1_graph_a2608f901678f9dd6e7c2ba18921d2521}\index{Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}!Graph@{Graph}}
+\index{Graph@{Graph}!Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_graph_a2608f901678f9dd6e7c2ba18921d2521} 
+\mbox{\hyperlink{class_mazes_1_1_graph}{Mazes.\+Graph}}$<$ T $>$.\mbox{\hyperlink{class_mazes_1_1_graph}{Graph}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mazes_1_1_graph_a13f973630468db5b506a3c9586bc0af9}\index{Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}!AddEdge@{AddEdge}}
+\index{AddEdge@{AddEdge}!Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddEdge()}{AddEdge()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_graph_a13f973630468db5b506a3c9586bc0af9} 
+void \mbox{\hyperlink{class_mazes_1_1_graph}{Mazes.\+Graph}}$<$ T $>$.Add\+Edge (\begin{DoxyParamCaption}\item[{T}]{u}{, }\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Add an Edge between u to v. 
+
+Note\+: Will only add an edge if both vertices already exist. \begin{DoxySeeAlso}{See also}
+\doxylink{class_mazes_1_1_graph_ad81f981afade2dc7a4261a4bfffb8ecb}{Add\+Vertex(\+T v)} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em u} & the vertex that you wish to add an edge to. \\
+\hline
+{\em v} & the other vertex that you wish to add an edge to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_mazes_1_1_graph_ad81f981afade2dc7a4261a4bfffb8ecb}\index{Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}!AddVertex@{AddVertex}}
+\index{AddVertex@{AddVertex}!Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddVertex()}{AddVertex()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_graph_ad81f981afade2dc7a4261a4bfffb8ecb} 
+void \mbox{\hyperlink{class_mazes_1_1_graph}{Mazes.\+Graph}}$<$ T $>$.Add\+Vertex (\begin{DoxyParamCaption}\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Add a vertex to the map, default initialized with no neighbors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & the value of the vertex we wish to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_mazes_1_1_graph_a008b637335fb96f44806b62351e67d57}\index{Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}!GetEnumerator@{GetEnumerator}}
+\index{GetEnumerator@{GetEnumerator}!Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{GetEnumerator()}{GetEnumerator()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_graph_a008b637335fb96f44806b62351e67d57} 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_mazes_1_1_graph}{Mazes.\+Graph}}$<$ T $>$.Get\+Enumerator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_mazes_1_1_graph_a2844965731fe2ea9cf1fbb82e74d015d}\index{Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}!getNeighbors@{getNeighbors}}
+\index{getNeighbors@{getNeighbors}!Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNeighbors()}{getNeighbors()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_graph_a2844965731fe2ea9cf1fbb82e74d015d} 
+List$<$ T $>$ \mbox{\hyperlink{class_mazes_1_1_graph}{Mazes.\+Graph}}$<$ T $>$.get\+Neighbors (\begin{DoxyParamCaption}\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Get the list of neighbors of a given vertex. 
+
+\begin{DoxyReturn}{Returns}
+the list of neighbors for a vertex if the vertex exists, else an empty list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & the vertex we wish to get the neighbors for. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_mazes_1_1_graph_a5c1fde20917c06b919f92b9dc0b6dc87}\index{Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}!\_neighbors@{\_neighbors}}
+\index{\_neighbors@{\_neighbors}!Mazes.Graph$<$ T $>$@{Mazes.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_neighbors}{\_neighbors}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_graph_a5c1fde20917c06b919f92b9dc0b6dc87} 
+readonly Dictionary$<$T, List$<$T$>$ $>$ \mbox{\hyperlink{class_mazes_1_1_graph}{Mazes.\+Graph}}$<$ T $>$.\+\_\+neighbors\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_graphs_8cs}{Graphs.\+cs}}\end{DoxyCompactItemize}

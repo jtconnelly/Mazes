@@ -1,0 +1,51 @@
+\doxysection{Mazes.\+Weighted\+Coordinate\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_mazes_1_1_weighted_coordinate_graph}{}\label{class_mazes_1_1_weighted_coordinate_graph}\index{Mazes.WeightedCoordinateGraph$<$ T $>$@{Mazes.WeightedCoordinateGraph$<$ T $>$}}
+
+
+a graph implementation based on the Weighted\+Graph Class using the coordinate struct.  
+
+
+Inheritance diagram for Mazes.\+Weighted\+Coordinate\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d3/d3e/class_mazes_1_1_weighted_coordinate_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Graph.\+Weighted\+Graph$<$ Coordinate2\+D$<$ T $>$ $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_1_1_weighted_graph_a84a2a6d611013f232131af95d469546c}{Weighted\+Graph}} ()
+\item 
+void \mbox{\hyperlink{class_graph_1_1_weighted_graph_ac22ca1894363b960614d1bf7a1a9e814}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_1_1_weighted_graph_a0913dc44c735050aaf63d6e29b98fc13}{Add\+Edge}} (T u, T v, int weight)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+List$<$ Key\+Value\+Pair$<$ T, int $>$ $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a794a15a1f1ae6d8e6bdabb55d08264d5}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\item 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a2f7287e43f3510afa6b588ddce6fd981}{Get\+Enumerator}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Graph.\+Weighted\+Graph$<$ Coordinate2\+D$<$ T $>$ $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ T, List$<$ Key\+Value\+Pair$<$ T, int $>$ $>$ $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a9157dd497ca8429aee389587db3fbd3d}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a graph implementation based on the Weighted\+Graph Class using the coordinate struct. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_weighted_graph_a84a2a6d611013f232131af95d469546c}{Weighted\+Graph} 
+
+\doxylink{struct_mazes_1_1_coordinate2_d}{Coordinate2D} Since this implementation is based on the base \doxylink{class_graph_1_1_weighted_graph_a84a2a6d611013f232131af95d469546c}{Weighted\+Graph} class, we can use this with any of the iterations of \doxylink{class_graph_1_1_weighted_graph_a84a2a6d611013f232131af95d469546c}{Weighted\+Graph}. 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em INumber$<$T$>$}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_maze_8cs}{Maze.\+cs}}\end{DoxyCompactItemize}

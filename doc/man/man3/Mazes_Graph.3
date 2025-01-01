@@ -1,0 +1,115 @@
+.TH "Mazes.Graph< T >" 3 "Version 1.0" "Mazes" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mazes.Graph< T > \- a \fBGraph\fP Implementation for non null types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IEnumerable< T >\&.
+.PP
+Inherited by \fBMazes\&.Digraph< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGraph\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (T v)"
+.br
+.RI "Add a vertex to the map, default initialized with no neighbors\&. "
+.ti -1c
+.RI "void \fBAddEdge\fP (T u, T v)"
+.br
+.RI "Add an Edge between u to v\&. "
+.ti -1c
+.RI "List< T > \fBgetNeighbors\fP (T v)"
+.br
+.RI "Get the list of neighbors of a given vertex\&. "
+.ti -1c
+.RI "IEnumerator< T > \fBGetEnumerator\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly Dictionary< T, List< T > > \fB_neighbors\fP"
+.br
+.RI "a Dictionary type where the key is a vertex and the value is it's list of neighbors\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+a \fBGraph\fP Implementation for non null types\&. 
+
+A graph is a set of vertices with edges in between\&. Given this relationship, we can create a structure that can later be visualized and implemented for other purposes\&. Some Uses would be \fBMazes\fP: Both Generation and Solving, as well as relational pathing between 2 objects\&. Implements IEnumerable in order to be able to loop through the vertices\&. 
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBMazes\&.Graph\fP< T >\&.\fBGraph\fP ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBMazes\&.Graph\fP< T >\&.AddEdge (T u, T v)"
+
+.PP
+Add an Edge between u to v\&. Note: Will only add an edge if both vertices already exist\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBAddVertex(T v)\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIu\fP the vertex that you wish to add an edge to\&. 
+.br
+\fIv\fP the other vertex that you wish to add an edge to\&. 
+.RE
+.PP
+
+.SS "void \fBMazes\&.Graph\fP< T >\&.AddVertex (T v)"
+
+.PP
+Add a vertex to the map, default initialized with no neighbors\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIv\fP the value of the vertex we wish to add\&. 
+.RE
+.PP
+
+.SS "IEnumerator< T > \fBMazes\&.Graph\fP< T >\&.GetEnumerator ()"
+
+.SS "List< T > \fBMazes\&.Graph\fP< T >\&.getNeighbors (T v)"
+
+.PP
+Get the list of neighbors of a given vertex\&. 
+.PP
+\fBReturns\fP
+.RS 4
+the list of neighbors for a vertex if the vertex exists, else an empty list 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIv\fP the vertex we wish to get the neighbors for\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly Dictionary<T, List<T> > \fBMazes\&.Graph\fP< T >\&._neighbors\fR [protected]\fP"
+
+.PP
+a Dictionary type where the key is a vertex and the value is it's list of neighbors\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Mazes from the source code\&.

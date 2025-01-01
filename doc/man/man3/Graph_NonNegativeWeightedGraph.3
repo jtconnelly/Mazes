@@ -1,0 +1,147 @@
+.TH "Graph.NonNegativeWeightedGraph< T >" 3 "Version 1.0" "Mazes" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Graph.NonNegativeWeightedGraph< T > \- a weighted graph implementation based on the \fBGraph\fP Class forcing non-negative weights\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBGraph\&.WeightedGraph< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNonNegativeWeightedGraph\fP ()"
+.br
+.ti -1c
+.RI "new void \fBAddVertex\fP (T v)"
+.br
+.RI "Add a vertex to the map, default initialized with no neighbors\&. "
+.ti -1c
+.RI "void \fBAddEdge\fP (T u, T v, uint weight)"
+.br
+.RI "Add an Edge between u to v\&. "
+.ti -1c
+.RI "new List< KeyValuePair< T, uint > > \fBgetNeighbors\fP (T v)"
+.br
+.RI "Get the list of neighbors of a given vertex\&. "
+.in -1c
+
+Public Member Functions inherited from \fBGraph\&.WeightedGraph< T >\fP
+.in +1c
+.ti -1c
+.RI "\fBWeightedGraph\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (T v)"
+.br
+.RI "Add a vertex to the map, default initialized with no neighbors\&. "
+.ti -1c
+.RI "void \fBAddEdge\fP (T u, T v, int weight)"
+.br
+.RI "Add an Edge between u to v\&. "
+.ti -1c
+.RI "List< KeyValuePair< T, int > > \fBgetNeighbors\fP (T v)"
+.br
+.RI "Get the list of neighbors of a given vertex\&. "
+.ti -1c
+.RI "IEnumerator< T > \fBGetEnumerator\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "new readonly Dictionary< T, List< KeyValuePair< T, uint > > > \fB_neighbors\fP"
+.br
+.RI "a Dictionary type where the key is a vertex and the value is it's list of neighbors\&. "
+.in -1c
+
+Protected Attributes inherited from \fBGraph\&.WeightedGraph< T >\fP
+.in +1c
+.ti -1c
+.RI "readonly Dictionary< T, List< KeyValuePair< T, int > > > \fB_neighbors\fP"
+.br
+.RI "a Dictionary type where the key is a vertex and the value is it's list of neighbors\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+a weighted graph implementation based on the \fBGraph\fP Class forcing non-negative weights\&. 
+
+
+.PP
+\fBSee also\fP
+.RS 4
+\fBWeightedGraph\fP A weighted \fBGraph\fP assigns a weight to an edge\&. This weight can be used by algorithms to find the most opimal paths, such as Dijkstra's or A* algorithms\&. Forcing non negative weights makes sure that we can always use Dijkstras 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBGraph\&.NonNegativeWeightedGraph\fP< T >\&.\fBNonNegativeWeightedGraph\fP ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBGraph\&.NonNegativeWeightedGraph\fP< T >\&.AddEdge (T u, T v, uint weight)"
+
+.PP
+Add an Edge between u to v\&. Note: Will only add an edge if both vertices already exist\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBAddVertex(T v)\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIu\fP the vertex that you wish to add an edge to\&. 
+.br
+\fIv\fP the other vertex that you wish to add an edge to\&. 
+.br
+\fIweight\fP the given weight of said edge\&. 
+.RE
+.PP
+
+.SS "new void \fBGraph\&.NonNegativeWeightedGraph\fP< T >\&.AddVertex (T v)"
+
+.PP
+Add a vertex to the map, default initialized with no neighbors\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIv\fP the value of the vertex we wish to add\&. 
+.RE
+.PP
+
+.SS "new List< KeyValuePair< T, uint > > \fBGraph\&.NonNegativeWeightedGraph\fP< T >\&.getNeighbors (T v)"
+
+.PP
+Get the list of neighbors of a given vertex\&. 
+.PP
+\fBReturns\fP
+.RS 4
+the list of neighbors for a vertex if the vertex exists with their accompanying weights, else an empty list 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIv\fP the vertex we wish to get the neighbors for\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "new readonly Dictionary<T, List<KeyValuePair<T, uint> > > \fBGraph\&.NonNegativeWeightedGraph\fP< T >\&._neighbors\fR [protected]\fP"
+
+.PP
+a Dictionary type where the key is a vertex and the value is it's list of neighbors\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Mazes from the source code\&.

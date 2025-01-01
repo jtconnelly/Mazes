@@ -1,0 +1,166 @@
+.TH "Graph.SearchAlgorithmExtensions" 3 "Version 1.0" "Mazes" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Graph.SearchAlgorithmExtensions \- An extension class for \fBGraph\fP that implements searching algorithms as well as their complementary paths\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static ISet< T > \fBDFS< T >\fP (this \fBGraph\fP< T > graph, T start)"
+.br
+.RI "A Depth First Search Algorithm\&. "
+.ti -1c
+.RI "static ISet< T > \fBBFS< T >\fP (this \fBGraph\fP< T > graph, T start)"
+.br
+.RI "A Breadth First Search Algorithm\&. "
+.ti -1c
+.RI "static List< T > \fBDFSPath< T >\fP (this \fBGraph\fP< T > graph, T start, T end)"
+.br
+.RI "A Depth First Search Algorithm to find a path between two vertices\&. "
+.ti -1c
+.RI "static List< T > \fBBFSPath< T >\fP (this \fBGraph\fP< T > graph, T start, T end)"
+.br
+.RI "A Breadth First Search Algorithm to find a path between two vertices\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An extension class for \fBGraph\fP that implements searching algorithms as well as their complementary paths\&. 
+
+
+.PP
+\fBSee also\fP
+.RS 4
+\fBGraph\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static ISet< T > Graph\&.SearchAlgorithmExtensions\&.BFS< T > (this \fBGraph\fP< T > graph, T start)\fR [static]\fP"
+
+.PP
+A Breadth First Search Algorithm\&. Given a starting value, discover the possible paths and routes available from the edges\&. In the algorithm, we use a queue to pop the first found neighbor, meaning we will follow incrementally work through our closest neighbors before moving on to their neighbors\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBDFS<T>(this Graph<T> graph, T start)\fP 
+
+.PP
+\fBBFSPath<T>(this Graph<T> graph, T start, T end)\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a set of all vertexes found that have a path from start\&. 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SS "static List< T > Graph\&.SearchAlgorithmExtensions\&.BFSPath< T > (this \fBGraph\fP< T > graph, T start, T end)\fR [static]\fP"
+
+.PP
+A Breadth First Search Algorithm to find a path between two vertices\&. Given a starting value, discover the possible paths and routes available from the edges until we find a path between the start and end\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBBFS<T>(this Graph<T> graph, T start)\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.br
+\fIend\fP the ending vertex that we are looking for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a list format of the found path between start and end\&. 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SS "static ISet< T > Graph\&.SearchAlgorithmExtensions\&.DFS< T > (this \fBGraph\fP< T > graph, T start)\fR [static]\fP"
+
+.PP
+A Depth First Search Algorithm\&. Given a starting value, discover the possible paths and routes available from the edges\&. In the algorithm, we use a stack to pop the last found neighbor, meaning we will follow a path to it's entirety before we go back up to a previous path\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBBFS<T>(this Graph<T> graph, T start)\fP 
+
+.PP
+\fBDFSPath<T>(this Graph<T> graph, T start, T end)\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a set of all vertexes found that have a path from start\&. 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SS "static List< T > Graph\&.SearchAlgorithmExtensions\&.DFSPath< T > (this \fBGraph\fP< T > graph, T start, T end)\fR [static]\fP"
+
+.PP
+A Depth First Search Algorithm to find a path between two vertices\&. Given a starting value, discover the possible paths and routes available from the edges until we find a path between the start and end\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBDFS<T>(this Graph<T> graph, T start)\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.br
+\fIend\fP the ending vertex that we are looking for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a list format of the found path between start and end\&. 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Mazes from the source code\&.

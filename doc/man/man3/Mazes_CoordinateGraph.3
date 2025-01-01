@@ -1,0 +1,67 @@
+.TH "Mazes.CoordinateGraph< T >" 3 "Version 1.0" "Mazes" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mazes.CoordinateGraph< T > \- a graph implementation based on the \fBGraph\fP Class using the coordinate struct\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBGraph\&.Graph< Coordinate2D< T > >\fP\&.
+.SS "Additional Inherited Members"
+
+
+Public Member Functions inherited from \fBGraph\&.Graph< Coordinate2D< T > >\fP
+.in +1c
+.ti -1c
+.RI "\fBGraph\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (T v)"
+.br
+.RI "Add a vertex to the map, default initialized with no neighbors\&. "
+.ti -1c
+.RI "void \fBAddEdge\fP (T u, T v)"
+.br
+.RI "Add an Edge between u to v\&. "
+.ti -1c
+.RI "List< T > \fBgetNeighbors\fP (T v)"
+.br
+.RI "Get the list of neighbors of a given vertex\&. "
+.ti -1c
+.RI "IEnumerator< T > \fBGetEnumerator\fP ()"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBGraph\&.Graph< Coordinate2D< T > >\fP
+.in +1c
+.ti -1c
+.RI "readonly Dictionary< T, List< T > > \fB_neighbors\fP"
+.br
+.RI "a Dictionary type where the key is a vertex and the value is it's list of neighbors\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+a graph implementation based on the \fBGraph\fP Class using the coordinate struct\&. 
+
+
+.PP
+\fBSee also\fP
+.RS 4
+\fBGraph\fP 
+
+.PP
+\fBCoordinate2D\fP Since this implementation is based on the base \fBGraph\fP class, we can use this with any of the iterations of \fBGraph\fP\&. 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIINumber<T>\fP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Mazes from the source code\&.

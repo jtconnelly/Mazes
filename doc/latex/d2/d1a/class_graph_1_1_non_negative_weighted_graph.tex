@@ -1,0 +1,144 @@
+\doxysection{Graph.\+Non\+Negative\+Weighted\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_graph_1_1_non_negative_weighted_graph}{}\label{class_graph_1_1_non_negative_weighted_graph}\index{Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}}
+
+
+a weighted graph implementation based on the \doxylink{class_graph_1_1_graph}{Graph} Class forcing non-\/negative weights.  
+
+
+Inheritance diagram for Graph.\+Non\+Negative\+Weighted\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d2/d1a/class_graph_1_1_non_negative_weighted_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_a51f7fcae2dff549f2d830162fa348208}{Non\+Negative\+Weighted\+Graph}} ()
+\item 
+new void \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_ad4a56e5939f30398d069dd696855018d}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_a593e1c0485b04eec9014e069fce5613d}{Add\+Edge}} (T u, T v, uint weight)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+new List$<$ Key\+Value\+Pair$<$ T, uint $>$ $>$ \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_ab969a2aa066f3b8f2eb3225e77c0c426}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Graph.\+Weighted\+Graph$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_1_1_weighted_graph_a84a2a6d611013f232131af95d469546c}{Weighted\+Graph}} ()
+\item 
+void \mbox{\hyperlink{class_graph_1_1_weighted_graph_ac22ca1894363b960614d1bf7a1a9e814}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_1_1_weighted_graph_a0913dc44c735050aaf63d6e29b98fc13}{Add\+Edge}} (T u, T v, int weight)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+List$<$ Key\+Value\+Pair$<$ T, int $>$ $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a794a15a1f1ae6d8e6bdabb55d08264d5}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\item 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a2f7287e43f3510afa6b588ddce6fd981}{Get\+Enumerator}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+new readonly Dictionary$<$ T, List$<$ Key\+Value\+Pair$<$ T, uint $>$ $>$ $>$ \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_a894ca2ecfb8b3fc88aad5a78cb7766da}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Graph.\+Weighted\+Graph$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ T, List$<$ Key\+Value\+Pair$<$ T, int $>$ $>$ $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a9157dd497ca8429aee389587db3fbd3d}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a weighted graph implementation based on the \doxylink{class_graph_1_1_graph}{Graph} Class forcing non-\/negative weights. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} A weighted \doxylink{class_graph_1_1_graph}{Graph} assigns a weight to an edge. This weight can be used by algorithms to find the most opimal paths, such as Dijkstra\textquotesingle{}s or A\texorpdfstring{$\ast$}{*} algorithms. Forcing non negative weights makes sure that we can always use Dijkstras 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_graph_1_1_non_negative_weighted_graph_a51f7fcae2dff549f2d830162fa348208}\index{Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}!NonNegativeWeightedGraph@{NonNegativeWeightedGraph}}
+\index{NonNegativeWeightedGraph@{NonNegativeWeightedGraph}!Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NonNegativeWeightedGraph()}{NonNegativeWeightedGraph()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_non_negative_weighted_graph_a51f7fcae2dff549f2d830162fa348208} 
+\mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Graph.\+Non\+Negative\+Weighted\+Graph}}$<$ T $>$.\mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Non\+Negative\+Weighted\+Graph}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graph_1_1_non_negative_weighted_graph_a593e1c0485b04eec9014e069fce5613d}\index{Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}!AddEdge@{AddEdge}}
+\index{AddEdge@{AddEdge}!Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddEdge()}{AddEdge()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_non_negative_weighted_graph_a593e1c0485b04eec9014e069fce5613d} 
+void \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Graph.\+Non\+Negative\+Weighted\+Graph}}$<$ T $>$.Add\+Edge (\begin{DoxyParamCaption}\item[{T}]{u}{, }\item[{T}]{v}{, }\item[{uint}]{weight}{}\end{DoxyParamCaption})}
+
+
+
+Add an Edge between u to v. 
+
+Note\+: Will only add an edge if both vertices already exist. \begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_non_negative_weighted_graph_ad4a56e5939f30398d069dd696855018d}{Add\+Vertex(\+T v)} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em u} & the vertex that you wish to add an edge to. \\
+\hline
+{\em v} & the other vertex that you wish to add an edge to. \\
+\hline
+{\em weight} & the given weight of said edge. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_graph_1_1_non_negative_weighted_graph_ad4a56e5939f30398d069dd696855018d}\index{Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}!AddVertex@{AddVertex}}
+\index{AddVertex@{AddVertex}!Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddVertex()}{AddVertex()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_non_negative_weighted_graph_ad4a56e5939f30398d069dd696855018d} 
+new void \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Graph.\+Non\+Negative\+Weighted\+Graph}}$<$ T $>$.Add\+Vertex (\begin{DoxyParamCaption}\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Add a vertex to the map, default initialized with no neighbors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & the value of the vertex we wish to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_graph_1_1_non_negative_weighted_graph_ab969a2aa066f3b8f2eb3225e77c0c426}\index{Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}!getNeighbors@{getNeighbors}}
+\index{getNeighbors@{getNeighbors}!Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNeighbors()}{getNeighbors()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_non_negative_weighted_graph_ab969a2aa066f3b8f2eb3225e77c0c426} 
+new List$<$ Key\+Value\+Pair$<$ T, uint $>$ $>$ \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Graph.\+Non\+Negative\+Weighted\+Graph}}$<$ T $>$.get\+Neighbors (\begin{DoxyParamCaption}\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Get the list of neighbors of a given vertex. 
+
+\begin{DoxyReturn}{Returns}
+the list of neighbors for a vertex if the vertex exists with their accompanying weights, else an empty list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & the vertex we wish to get the neighbors for. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_graph_1_1_non_negative_weighted_graph_a894ca2ecfb8b3fc88aad5a78cb7766da}\index{Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}!\_neighbors@{\_neighbors}}
+\index{\_neighbors@{\_neighbors}!Graph.NonNegativeWeightedGraph$<$ T $>$@{Graph.NonNegativeWeightedGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_neighbors}{\_neighbors}}
+{\footnotesize\ttfamily \label{class_graph_1_1_non_negative_weighted_graph_a894ca2ecfb8b3fc88aad5a78cb7766da} 
+new readonly Dictionary$<$T, List$<$Key\+Value\+Pair$<$T, uint$>$ $>$ $>$ \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Graph.\+Non\+Negative\+Weighted\+Graph}}$<$ T $>$.\+\_\+neighbors\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_graphs_8cs}{Graphs.\+cs}}\end{DoxyCompactItemize}

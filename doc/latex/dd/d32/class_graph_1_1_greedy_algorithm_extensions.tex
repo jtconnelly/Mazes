@@ -1,0 +1,226 @@
+\doxysection{Graph.\+Greedy\+Algorithm\+Extensions Class Reference}
+\hypertarget{class_graph_1_1_greedy_algorithm_extensions}{}\label{class_graph_1_1_greedy_algorithm_extensions}\index{Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}}
+
+
+An extension class for \doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} that implements greedy algorithms as well as their complementary paths.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_greedy_algorithm_extensions_a36357321bddf3210074cccd81c014d0f}{Dijkstra$<$ T $>$}} (this \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Non\+Negative\+Weighted\+Graph}}$<$ T $>$ graph, T start, T end)
+\begin{DoxyCompactList}\small\item\em Implementation of Dijkstra\textquotesingle{}s algorithm to return the shortest path from start to end. \end{DoxyCompactList}\item 
+static List$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_greedy_algorithm_extensions_a7d0ead6034ba2dd296a39a2ac5306169}{Dijkstra$<$ T $>$}} (this \mbox{\hyperlink{class_graph_1_1_graph}{Graph}}$<$ T $>$ graph, T start, T end)
+\begin{DoxyCompactList}\small\item\em Implementation of Dijkstra\textquotesingle{}s algorithm to return the shortest path from start to end. \end{DoxyCompactList}\item 
+static List$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_greedy_algorithm_extensions_abc1d5f9d8c613e3da1471bf1e99e54b7}{Bellman\+Ford$<$ T $>$}} (this \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Weighted\+Graph}}$<$ T $>$ graph, T start, T end)
+\begin{DoxyCompactList}\small\item\em Implementation of the Bellman-\/\+Ford algorithm to return the shortest path from start to end. \end{DoxyCompactList}\item 
+static List$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_greedy_algorithm_extensions_ad94f695a04912331cfb9c4e69430de36}{Floyd\+Warshall$<$ T $>$}} (this \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Weighted\+Graph}}$<$ T $>$ graph, T start, T end)
+\begin{DoxyCompactList}\small\item\em Implementation of the Floyd-\/\+Warshall Algorithm for Weighted Graphs. \end{DoxyCompactList}\item 
+static List$<$ \mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$ $>$ \mbox{\hyperlink{class_graph_1_1_greedy_algorithm_extensions_a8e4fa8f1636b84886288cca96281d18e}{AStar$<$ T $>$}} (this \mbox{\hyperlink{class_mazes_1_1_non_negative_weighted_coordinate_graph}{Mazes.\+Non\+Negative\+Weighted\+Coordinate\+Graph}}$<$ T $>$ graph, \mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$ start, \mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$ end, Func$<$ T, T, T, T, double $>$ heuristic)
+\begin{DoxyCompactList}\small\item\em Implementation of the A\texorpdfstring{$\ast$}{*} algorithm for non negative weighted graphs. \end{DoxyCompactList}\item 
+static List$<$ \mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$ $>$ \mbox{\hyperlink{class_graph_1_1_greedy_algorithm_extensions_a1c6a60fd573f94fb5e84178010fd2d04}{AStar$<$ T $>$}} (this \mbox{\hyperlink{class_mazes_1_1_coordinate_graph}{Mazes.\+Coordinate\+Graph}}$<$ T $>$ graph, \mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$ start, \mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$ end, Func$<$ T, T, T, T, double $>$ heuristic)
+\begin{DoxyCompactList}\small\item\em Implementation of the A\texorpdfstring{$\ast$}{*} algorithm for non-\/weighted graphs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An extension class for \doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} that implements greedy algorithms as well as their complementary paths. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graph_1_1_greedy_algorithm_extensions_a1c6a60fd573f94fb5e84178010fd2d04}\index{Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}!AStar$<$ T $>$@{AStar$<$ T $>$}}
+\index{AStar$<$ T $>$@{AStar$<$ T $>$}!Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{AStar$<$ T $>$()}{AStar< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_graph_1_1_greedy_algorithm_extensions_a1c6a60fd573f94fb5e84178010fd2d04} 
+static List$<$ \mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$ $>$ Graph.\+Greedy\+Algorithm\+Extensions.\+AStar$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_mazes_1_1_coordinate_graph}{Mazes.\+Coordinate\+Graph}}$<$ T $>$}]{graph}{, }\item[{\mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$}]{start}{, }\item[{\mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$}]{end}{, }\item[{Func$<$ T, T, T, T, double $>$}]{heuristic}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Implementation of the A\texorpdfstring{$\ast$}{*} algorithm for non-\/weighted graphs. 
+
+\begin{DoxySeeAlso}{See also}
+AStar$<$\+T$>$(this Weighted\+Graph$<$\+T$>$ graph, T start, T end)
+\end{DoxySeeAlso}
+A\texorpdfstring{$\ast$}{*} is an evolution of Dijkstras algorithm, implementing a heuristic that is targeted towards the end goal, while Dijkstra\textquotesingle{}s will get the shortest path for all possible nodes. \begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_greedy_algorithm_extensions_a36357321bddf3210074cccd81c014d0f}{Dijkstra$<$\+T$>$(this Non\+Negative\+Weighted\+Graph$<$\+T$>$ graph, T start, T end)} We can use this algorithm with non-\/weighted graphs, since we are just calculating movement from A to B, so every "{}move"{} is the same as adding a distance of 1 in Dijkstra.
+\end{DoxySeeAlso}
+The heuristic should be taken into account based on how we are able to "{}travel"{} around the nodes. For example\+: you can\textquotesingle{}t traverse through walls, and some places you can only travel in 4 directions (mazes) 
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+{\em end} & the ending vertex that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list format of the found path between start and end, if any 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em INumber$<$T$>$}]\end{description}
+\end{Desc}
+\Hypertarget{class_graph_1_1_greedy_algorithm_extensions_a8e4fa8f1636b84886288cca96281d18e}\index{Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}!AStar$<$ T $>$@{AStar$<$ T $>$}}
+\index{AStar$<$ T $>$@{AStar$<$ T $>$}!Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{AStar$<$ T $>$()}{AStar< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_graph_1_1_greedy_algorithm_extensions_a8e4fa8f1636b84886288cca96281d18e} 
+static List$<$ \mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$ $>$ Graph.\+Greedy\+Algorithm\+Extensions.\+AStar$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_mazes_1_1_non_negative_weighted_coordinate_graph}{Mazes.\+Non\+Negative\+Weighted\+Coordinate\+Graph}}$<$ T $>$}]{graph}{, }\item[{\mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$}]{start}{, }\item[{\mbox{\hyperlink{struct_mazes_1_1_coordinate2_d}{Mazes.\+Coordinate2D}}$<$ T $>$}]{end}{, }\item[{Func$<$ T, T, T, T, double $>$}]{heuristic}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Implementation of the A\texorpdfstring{$\ast$}{*} algorithm for non negative weighted graphs. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_greedy_algorithm_extensions_a8e4fa8f1636b84886288cca96281d18e}{AStar$<$\+T$>$}(this Mazes.\+Coordinate\+Graph$<$\+T$>$ graph, Mazes.\+Coordinate2\+D$<$\+T$>$ start, Mazes.\+Coordinate2\+D$<$\+T$>$ end)
+\end{DoxySeeAlso}
+A\texorpdfstring{$\ast$}{*} is an evolution of Dijkstras algorithm, implementing a heuristic that is targeted towards the end goal, while Dijkstra\textquotesingle{}s will get the shortest path for all possible nodes. \begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_greedy_algorithm_extensions_a36357321bddf3210074cccd81c014d0f}{Dijkstra$<$\+T$>$(this Non\+Negative\+Weighted\+Graph$<$\+T$>$ graph, T start, T end)}
+\end{DoxySeeAlso}
+The heuristic should be taken into account based on how we are able to "{}travel"{} around the nodes. For example\+: you can\textquotesingle{}t traverse through walls, and some places you can only travel in 4 directions (mazes) 
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+{\em end} & the ending vertex that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list format of the found path between start and end, if any 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em INumber$<$T$>$}]\end{description}
+\end{Desc}
+\Hypertarget{class_graph_1_1_greedy_algorithm_extensions_abc1d5f9d8c613e3da1471bf1e99e54b7}\index{Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}!BellmanFord$<$ T $>$@{BellmanFord$<$ T $>$}}
+\index{BellmanFord$<$ T $>$@{BellmanFord$<$ T $>$}!Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{BellmanFord$<$ T $>$()}{BellmanFord< T >()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_greedy_algorithm_extensions_abc1d5f9d8c613e3da1471bf1e99e54b7} 
+static List$<$ T $>$ Graph.\+Greedy\+Algorithm\+Extensions.\+Bellman\+Ford$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Weighted\+Graph}}$<$ T $>$}]{graph}{, }\item[{T}]{start}{, }\item[{T}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Implementation of the Bellman-\/\+Ford algorithm to return the shortest path from start to end. 
+
+This will go through every possible lowest option in a greedy fashion, indiscriminately finding out the shortest possible route This is not the fastest option, but will guarantee the lowest possible finding Since the loop is locked into only how many vertices there are, we can use negative weights
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+{\em end} & the ending vertex that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list format of the found path between start and end, if any 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+\Hypertarget{class_graph_1_1_greedy_algorithm_extensions_a7d0ead6034ba2dd296a39a2ac5306169}\index{Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}!Dijkstra$<$ T $>$@{Dijkstra$<$ T $>$}}
+\index{Dijkstra$<$ T $>$@{Dijkstra$<$ T $>$}!Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{Dijkstra$<$ T $>$()}{Dijkstra< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_graph_1_1_greedy_algorithm_extensions_a7d0ead6034ba2dd296a39a2ac5306169} 
+static List$<$ T $>$ Graph.\+Greedy\+Algorithm\+Extensions.\+Dijkstra$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_graph_1_1_graph}{Graph}}$<$ T $>$}]{graph}{, }\item[{T}]{start}{, }\item[{T}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Implementation of Dijkstra\textquotesingle{}s algorithm to return the shortest path from start to end. 
+
+This is not the most efficient algorithm, nor the most efficient implementation of the algorithm. The main issue is that for any start and end we will have to do the distance mapping step again. One way to make this more time efficient for larger programs is to encapsulate a cache class. Whenever a start is first called to be used in Dijkstras, we save the parent map so that from any endpoint we just have to follow back the trace. This would be better in the long run, as long as any later add\+Edge or add\+Vertex call either deletes this cache or updates it.
+
+An important note\+: Dijkstras does not work with negative weights, so we have to enforce the weights being non-\/negative \begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_graph}{Graph} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+{\em end} & the ending vertex that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list format of the found path between start and end, if any 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+\Hypertarget{class_graph_1_1_greedy_algorithm_extensions_a36357321bddf3210074cccd81c014d0f}\index{Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}!Dijkstra$<$ T $>$@{Dijkstra$<$ T $>$}}
+\index{Dijkstra$<$ T $>$@{Dijkstra$<$ T $>$}!Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{Dijkstra$<$ T $>$()}{Dijkstra< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_graph_1_1_greedy_algorithm_extensions_a36357321bddf3210074cccd81c014d0f} 
+static List$<$ T $>$ Graph.\+Greedy\+Algorithm\+Extensions.\+Dijkstra$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Non\+Negative\+Weighted\+Graph}}$<$ T $>$}]{graph}{, }\item[{T}]{start}{, }\item[{T}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Implementation of Dijkstra\textquotesingle{}s algorithm to return the shortest path from start to end. 
+
+This is not the most efficient algorithm, nor the most efficient implementation of the algorithm. The main issue is that for any start and end we will have to do the distance mapping step again. One way to make this more time efficient for larger programs is to encapsulate a cache class. Whenever a start is first called to be used in Dijkstras, we save the parent map so that from any endpoint we just have to follow back the trace. This would be better in the long run, as long as any later add\+Edge or add\+Vertex call either deletes this cache or updates it.
+
+An important note\+: Dijkstras does not work with negative weights, so we have to enforce the weights being non-\/negative \begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_non_negative_weighted_graph}{Non\+Negative\+Weighted\+Graph} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+{\em end} & the ending vertex that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list format of the found path between start and end, if any 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+\Hypertarget{class_graph_1_1_greedy_algorithm_extensions_ad94f695a04912331cfb9c4e69430de36}\index{Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}!FloydWarshall$<$ T $>$@{FloydWarshall$<$ T $>$}}
+\index{FloydWarshall$<$ T $>$@{FloydWarshall$<$ T $>$}!Graph.GreedyAlgorithmExtensions@{Graph.GreedyAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{FloydWarshall$<$ T $>$()}{FloydWarshall< T >()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_greedy_algorithm_extensions_ad94f695a04912331cfb9c4e69430de36} 
+static List$<$ T $>$ Graph.\+Greedy\+Algorithm\+Extensions.\+Floyd\+Warshall$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Weighted\+Graph}}$<$ T $>$}]{graph}{, }\item[{T}]{start}{, }\item[{T}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Implementation of the Floyd-\/\+Warshall Algorithm for Weighted Graphs. 
+
+This algorithm is not efficient and varies heavily from the others by requiring the be used in terms of the adjacency matrix. Given an adjacency matrix, we go through N\texorpdfstring{$^\wedge$}{\string^}3 times over vertices to get the smallest value between 2 vertices. After this, we trace back to start from our end point by grabbing the lowest possible value for that column in the matrix.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+{\em end} & the ending vertex that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list format of the found path between start and end, if any 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_search_algorithm_extensions_8cs}{Search\+Algorithm\+Extensions.\+cs}}\end{DoxyCompactItemize}

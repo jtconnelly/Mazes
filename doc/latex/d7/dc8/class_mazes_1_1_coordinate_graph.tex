@@ -1,0 +1,51 @@
+\doxysection{Mazes.\+Coordinate\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_mazes_1_1_coordinate_graph}{}\label{class_mazes_1_1_coordinate_graph}\index{Mazes.CoordinateGraph$<$ T $>$@{Mazes.CoordinateGraph$<$ T $>$}}
+
+
+a graph implementation based on the \doxylink{namespace_graph}{Graph} Class using the coordinate struct.  
+
+
+Inheritance diagram for Mazes.\+Coordinate\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d7/dc8/class_mazes_1_1_coordinate_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph$<$ Coordinate2\+D$<$ T $>$ $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_1_1_graph_ad92a1d5f9ed1a1ded004dbb68b92683c}{Graph}} ()
+\item 
+void \mbox{\hyperlink{class_graph_1_1_graph_a9a0bf09edf1402115b8ab91fcecbeef0}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_1_1_graph_a63ab42efb95ff67bf2068928e56401ed}{Add\+Edge}} (T u, T v)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+List$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_graph_aa4a767d4aeb1c7379d74ec3c47a0a9c4}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\item 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_graph_a9c471d8a91cdf7d8c41aad9139c4ac93}{Get\+Enumerator}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph$<$ Coordinate2\+D$<$ T $>$ $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ T, List$<$ T $>$ $>$ \mbox{\hyperlink{class_graph_1_1_graph_a5beaa7ff842c6aa814e4b7eea6fd6ff0}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a graph implementation based on the \doxylink{namespace_graph}{Graph} Class using the coordinate struct. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{namespace_graph}{Graph} 
+
+\doxylink{struct_mazes_1_1_coordinate2_d}{Coordinate2D} Since this implementation is based on the base \doxylink{namespace_graph}{Graph} class, we can use this with any of the iterations of \doxylink{namespace_graph}{Graph}. 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em INumber$<$T$>$}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_maze_8cs}{Maze.\+cs}}\end{DoxyCompactItemize}

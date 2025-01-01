@@ -1,0 +1,134 @@
+\doxysection{Graph.\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_graph_1_1_graph}{}\label{class_graph_1_1_graph}\index{Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}}
+
+
+a \doxylink{class_graph_1_1_graph}{Graph} Implementation for non null types.  
+
+
+Inheritance diagram for Graph.\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d6/d4f/class_graph_1_1_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_1_1_graph_ad92a1d5f9ed1a1ded004dbb68b92683c}{Graph}} ()
+\item 
+void \mbox{\hyperlink{class_graph_1_1_graph_a9a0bf09edf1402115b8ab91fcecbeef0}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_1_1_graph_a63ab42efb95ff67bf2068928e56401ed}{Add\+Edge}} (T u, T v)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+List$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_graph_aa4a767d4aeb1c7379d74ec3c47a0a9c4}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\item 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_graph_a9c471d8a91cdf7d8c41aad9139c4ac93}{Get\+Enumerator}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ T, List$<$ T $>$ $>$ \mbox{\hyperlink{class_graph_1_1_graph_a5beaa7ff842c6aa814e4b7eea6fd6ff0}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a \doxylink{class_graph_1_1_graph}{Graph} Implementation for non null types. 
+
+A graph is a set of vertices with edges in between. Given this relationship, we can create a structure that can later be visualized and implemented for other purposes. Some Uses would be \doxylink{namespace_mazes}{Mazes}\+: Both Generation and Solving, as well as relational pathing between 2 objects. Implements IEnumerable in order to be able to loop through the vertices. \begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_directional_graph}{Directional\+Graph} 
+
+\doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_graph_1_1_graph_ad92a1d5f9ed1a1ded004dbb68b92683c}\index{Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_graph_ad92a1d5f9ed1a1ded004dbb68b92683c} 
+\mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph}}$<$ T $>$.\mbox{\hyperlink{class_graph_1_1_graph}{Graph}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graph_1_1_graph_a63ab42efb95ff67bf2068928e56401ed}\index{Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}!AddEdge@{AddEdge}}
+\index{AddEdge@{AddEdge}!Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddEdge()}{AddEdge()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_graph_a63ab42efb95ff67bf2068928e56401ed} 
+void \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph}}$<$ T $>$.Add\+Edge (\begin{DoxyParamCaption}\item[{T}]{u}{, }\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Add an Edge between u to v. 
+
+Note\+: Will only add an edge if both vertices already exist. \begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_graph_a9a0bf09edf1402115b8ab91fcecbeef0}{Add\+Vertex(\+T v)} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em u} & the vertex that you wish to add an edge to. \\
+\hline
+{\em v} & the other vertex that you wish to add an edge to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_graph_1_1_graph_a9a0bf09edf1402115b8ab91fcecbeef0}\index{Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}!AddVertex@{AddVertex}}
+\index{AddVertex@{AddVertex}!Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddVertex()}{AddVertex()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_graph_a9a0bf09edf1402115b8ab91fcecbeef0} 
+void \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph}}$<$ T $>$.Add\+Vertex (\begin{DoxyParamCaption}\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Add a vertex to the map, default initialized with no neighbors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & the value of the vertex we wish to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_graph_1_1_graph_a9c471d8a91cdf7d8c41aad9139c4ac93}\index{Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}!GetEnumerator@{GetEnumerator}}
+\index{GetEnumerator@{GetEnumerator}!Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{GetEnumerator()}{GetEnumerator()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_graph_a9c471d8a91cdf7d8c41aad9139c4ac93} 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph}}$<$ T $>$.Get\+Enumerator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_graph_1_1_graph_aa4a767d4aeb1c7379d74ec3c47a0a9c4}\index{Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}!getNeighbors@{getNeighbors}}
+\index{getNeighbors@{getNeighbors}!Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNeighbors()}{getNeighbors()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_graph_aa4a767d4aeb1c7379d74ec3c47a0a9c4} 
+List$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph}}$<$ T $>$.get\+Neighbors (\begin{DoxyParamCaption}\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Get the list of neighbors of a given vertex. 
+
+\begin{DoxyReturn}{Returns}
+the list of neighbors for a vertex if the vertex exists, else an empty list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & the vertex we wish to get the neighbors for. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_graph_1_1_graph_a5beaa7ff842c6aa814e4b7eea6fd6ff0}\index{Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}!\_neighbors@{\_neighbors}}
+\index{\_neighbors@{\_neighbors}!Graph.Graph$<$ T $>$@{Graph.Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_neighbors}{\_neighbors}}
+{\footnotesize\ttfamily \label{class_graph_1_1_graph_a5beaa7ff842c6aa814e4b7eea6fd6ff0} 
+readonly Dictionary$<$T, List$<$T$>$ $>$ \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph}}$<$ T $>$.\+\_\+neighbors\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_graphs_8cs}{Graphs.\+cs}}\end{DoxyCompactItemize}

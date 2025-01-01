@@ -1,0 +1,76 @@
+\doxysection{Graph.\+Directional\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_graph_1_1_directional_graph}{}\label{class_graph_1_1_directional_graph}\index{Graph.DirectionalGraph$<$ T $>$@{Graph.DirectionalGraph$<$ T $>$}}
+
+
+a directional graph implementation based on the \doxylink{class_graph_1_1_graph}{Graph} Class.  
+
+
+Inheritance diagram for Graph.\+Directional\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d0/d85/class_graph_1_1_directional_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+new void \mbox{\hyperlink{class_graph_1_1_directional_graph_a5f56bd40626c1c8395f4785c535d74a8}{Add\+Edge}} (T u, T v)
+\begin{DoxyCompactList}\small\item\em Add an Edge from u to v, but not v to u. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_1_1_graph_ad92a1d5f9ed1a1ded004dbb68b92683c}{Graph}} ()
+\item 
+void \mbox{\hyperlink{class_graph_1_1_graph_a9a0bf09edf1402115b8ab91fcecbeef0}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_1_1_graph_a63ab42efb95ff67bf2068928e56401ed}{Add\+Edge}} (T u, T v)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+List$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_graph_aa4a767d4aeb1c7379d74ec3c47a0a9c4}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\item 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_graph_a9c471d8a91cdf7d8c41aad9139c4ac93}{Get\+Enumerator}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_graph_1_1_graph}{Graph.\+Graph$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ T, List$<$ T $>$ $>$ \mbox{\hyperlink{class_graph_1_1_graph_a5beaa7ff842c6aa814e4b7eea6fd6ff0}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a directional graph implementation based on the \doxylink{class_graph_1_1_graph}{Graph} Class. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_graph}{Graph} 
+
+\doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} A directional graph implementation does not reciprocate an edge between vertices, thus giving a direction in which a vertex is a neighbor to another. The rest of the implementation would stay the same. 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graph_1_1_directional_graph_a5f56bd40626c1c8395f4785c535d74a8}\index{Graph.DirectionalGraph$<$ T $>$@{Graph.DirectionalGraph$<$ T $>$}!AddEdge@{AddEdge}}
+\index{AddEdge@{AddEdge}!Graph.DirectionalGraph$<$ T $>$@{Graph.DirectionalGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddEdge()}{AddEdge()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_directional_graph_a5f56bd40626c1c8395f4785c535d74a8} 
+new void \mbox{\hyperlink{class_graph_1_1_directional_graph}{Graph.\+Directional\+Graph}}$<$ T $>$.Add\+Edge (\begin{DoxyParamCaption}\item[{T}]{u}{, }\item[{T}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Add an Edge from u to v, but not v to u. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & the vertex that you wish to add an edge to. \\
+\hline
+{\em v} & the vertex that will have an edge pointed to it. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_graphs_8cs}{Graphs.\+cs}}\end{DoxyCompactItemize}

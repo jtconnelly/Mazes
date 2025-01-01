@@ -1,0 +1,89 @@
+.TH "Graph.DirectionalGraph< T >" 3 "Version 1.0" "Mazes" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Graph.DirectionalGraph< T > \- a directional graph implementation based on the \fBGraph\fP Class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBGraph\&.Graph< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "new void \fBAddEdge\fP (T u, T v)"
+.br
+.RI "Add an Edge from u to v, but not v to u\&. "
+.in -1c
+
+Public Member Functions inherited from \fBGraph\&.Graph< T >\fP
+.in +1c
+.ti -1c
+.RI "\fBGraph\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (T v)"
+.br
+.RI "Add a vertex to the map, default initialized with no neighbors\&. "
+.ti -1c
+.RI "void \fBAddEdge\fP (T u, T v)"
+.br
+.RI "Add an Edge between u to v\&. "
+.ti -1c
+.RI "List< T > \fBgetNeighbors\fP (T v)"
+.br
+.RI "Get the list of neighbors of a given vertex\&. "
+.ti -1c
+.RI "IEnumerator< T > \fBGetEnumerator\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBGraph\&.Graph< T >\fP
+.in +1c
+.ti -1c
+.RI "readonly Dictionary< T, List< T > > \fB_neighbors\fP"
+.br
+.RI "a Dictionary type where the key is a vertex and the value is it's list of neighbors\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+a directional graph implementation based on the \fBGraph\fP Class\&. 
+
+
+.PP
+\fBSee also\fP
+.RS 4
+\fBGraph\fP 
+
+.PP
+\fBWeightedGraph\fP A directional graph implementation does not reciprocate an edge between vertices, thus giving a direction in which a vertex is a neighbor to another\&. The rest of the implementation would stay the same\&. 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SH "Member Function Documentation"
+.PP 
+.SS "new void \fBGraph\&.DirectionalGraph\fP< T >\&.AddEdge (T u, T v)"
+
+.PP
+Add an Edge from u to v, but not v to u\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIu\fP the vertex that you wish to add an edge to\&. 
+.br
+\fIv\fP the vertex that will have an edge pointed to it\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Mazes from the source code\&.

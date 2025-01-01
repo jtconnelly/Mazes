@@ -1,0 +1,256 @@
+.TH "Graph.GreedyAlgorithmExtensions" 3 "Version 1.0" "Mazes" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Graph.GreedyAlgorithmExtensions \- An extension class for \fBWeightedGraph\fP that implements greedy algorithms as well as their complementary paths\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static List< T > \fBDijkstra< T >\fP (this \fBNonNegativeWeightedGraph\fP< T > graph, T start, T end)"
+.br
+.RI "Implementation of Dijkstra's algorithm to return the shortest path from start to end\&. "
+.ti -1c
+.RI "static List< T > \fBDijkstra< T >\fP (this \fBGraph\fP< T > graph, T start, T end)"
+.br
+.RI "Implementation of Dijkstra's algorithm to return the shortest path from start to end\&. "
+.ti -1c
+.RI "static List< T > \fBBellmanFord< T >\fP (this \fBWeightedGraph\fP< T > graph, T start, T end)"
+.br
+.RI "Implementation of the Bellman-Ford algorithm to return the shortest path from start to end\&. "
+.ti -1c
+.RI "static List< T > \fBFloydWarshall< T >\fP (this \fBWeightedGraph\fP< T > graph, T start, T end)"
+.br
+.RI "Implementation of the Floyd-Warshall Algorithm for Weighted Graphs\&. "
+.ti -1c
+.RI "static List< \fBMazes\&.Coordinate2D\fP< T > > \fBAStar< T >\fP (this \fBMazes\&.NonNegativeWeightedCoordinateGraph\fP< T > graph, \fBMazes\&.Coordinate2D\fP< T > start, \fBMazes\&.Coordinate2D\fP< T > end, Func< T, T, T, T, double > heuristic)"
+.br
+.RI "Implementation of the A* algorithm for non negative weighted graphs\&. "
+.ti -1c
+.RI "static List< \fBMazes\&.Coordinate2D\fP< T > > \fBAStar< T >\fP (this \fBMazes\&.CoordinateGraph\fP< T > graph, \fBMazes\&.Coordinate2D\fP< T > start, \fBMazes\&.Coordinate2D\fP< T > end, Func< T, T, T, T, double > heuristic)"
+.br
+.RI "Implementation of the A* algorithm for non-weighted graphs\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An extension class for \fBWeightedGraph\fP that implements greedy algorithms as well as their complementary paths\&. 
+
+
+.PP
+\fBSee also\fP
+.RS 4
+\fBWeightedGraph\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static List< \fBMazes\&.Coordinate2D\fP< T > > Graph\&.GreedyAlgorithmExtensions\&.AStar< T > (this \fBMazes\&.CoordinateGraph\fP< T > graph, \fBMazes\&.Coordinate2D\fP< T > start, \fBMazes\&.Coordinate2D\fP< T > end, Func< T, T, T, T, double > heuristic)\fR [static]\fP"
+
+.PP
+Implementation of the A* algorithm for non-weighted graphs\&. 
+.PP
+\fBSee also\fP
+.RS 4
+AStar<T>(this WeightedGraph<T> graph, T start, T end)
+.RE
+.PP
+A* is an evolution of Dijkstras algorithm, implementing a heuristic that is targeted towards the end goal, while Dijkstra's will get the shortest path for all possible nodes\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBDijkstra<T>(this NonNegativeWeightedGraph<T> graph, T start, T end)\fP We can use this algorithm with non-weighted graphs, since we are just calculating movement from A to B, so every 'move' is the same as adding a distance of 1 in Dijkstra\&.
+.RE
+.PP
+The heuristic should be taken into account based on how we are able to 'travel' around the nodes\&. For example: you can't traverse through walls, and some places you can only travel in 4 directions (mazes) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.br
+\fIend\fP the ending vertex that we are looking for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a list format of the found path between start and end, if any 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIINumber<T>\fP
+.SS "static List< \fBMazes\&.Coordinate2D\fP< T > > Graph\&.GreedyAlgorithmExtensions\&.AStar< T > (this \fBMazes\&.NonNegativeWeightedCoordinateGraph\fP< T > graph, \fBMazes\&.Coordinate2D\fP< T > start, \fBMazes\&.Coordinate2D\fP< T > end, Func< T, T, T, T, double > heuristic)\fR [static]\fP"
+
+.PP
+Implementation of the A* algorithm for non negative weighted graphs\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBAStar<T>\fP(this Mazes\&.CoordinateGraph<T> graph, Mazes\&.Coordinate2D<T> start, Mazes\&.Coordinate2D<T> end)
+.RE
+.PP
+A* is an evolution of Dijkstras algorithm, implementing a heuristic that is targeted towards the end goal, while Dijkstra's will get the shortest path for all possible nodes\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBDijkstra<T>(this NonNegativeWeightedGraph<T> graph, T start, T end)\fP
+.RE
+.PP
+The heuristic should be taken into account based on how we are able to 'travel' around the nodes\&. For example: you can't traverse through walls, and some places you can only travel in 4 directions (mazes) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.br
+\fIend\fP the ending vertex that we are looking for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a list format of the found path between start and end, if any 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIINumber<T>\fP
+.SS "static List< T > Graph\&.GreedyAlgorithmExtensions\&.BellmanFord< T > (this \fBWeightedGraph\fP< T > graph, T start, T end)\fR [static]\fP"
+
+.PP
+Implementation of the Bellman-Ford algorithm to return the shortest path from start to end\&. This will go through every possible lowest option in a greedy fashion, indiscriminately finding out the shortest possible route This is not the fastest option, but will guarantee the lowest possible finding Since the loop is locked into only how many vertices there are, we can use negative weights
+
+.PP
+\fBSee also\fP
+.RS 4
+\fBWeightedGraph\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.br
+\fIend\fP the ending vertex that we are looking for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a list format of the found path between start and end, if any 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SS "static List< T > Graph\&.GreedyAlgorithmExtensions\&.Dijkstra< T > (this \fBGraph\fP< T > graph, T start, T end)\fR [static]\fP"
+
+.PP
+Implementation of Dijkstra's algorithm to return the shortest path from start to end\&. This is not the most efficient algorithm, nor the most efficient implementation of the algorithm\&. The main issue is that for any start and end we will have to do the distance mapping step again\&. One way to make this more time efficient for larger programs is to encapsulate a cache class\&. Whenever a start is first called to be used in Dijkstras, we save the parent map so that from any endpoint we just have to follow back the trace\&. This would be better in the long run, as long as any later addEdge or addVertex call either deletes this cache or updates it\&.
+
+.PP
+An important note: Dijkstras does not work with negative weights, so we have to enforce the weights being non-negative 
+.PP
+\fBSee also\fP
+.RS 4
+\fBGraph\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.br
+\fIend\fP the ending vertex that we are looking for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a list format of the found path between start and end, if any 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SS "static List< T > Graph\&.GreedyAlgorithmExtensions\&.Dijkstra< T > (this \fBNonNegativeWeightedGraph\fP< T > graph, T start, T end)\fR [static]\fP"
+
+.PP
+Implementation of Dijkstra's algorithm to return the shortest path from start to end\&. This is not the most efficient algorithm, nor the most efficient implementation of the algorithm\&. The main issue is that for any start and end we will have to do the distance mapping step again\&. One way to make this more time efficient for larger programs is to encapsulate a cache class\&. Whenever a start is first called to be used in Dijkstras, we save the parent map so that from any endpoint we just have to follow back the trace\&. This would be better in the long run, as long as any later addEdge or addVertex call either deletes this cache or updates it\&.
+
+.PP
+An important note: Dijkstras does not work with negative weights, so we have to enforce the weights being non-negative 
+.PP
+\fBSee also\fP
+.RS 4
+\fBNonNegativeWeightedGraph\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.br
+\fIend\fP the ending vertex that we are looking for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a list format of the found path between start and end, if any 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+.SS "static List< T > Graph\&.GreedyAlgorithmExtensions\&.FloydWarshall< T > (this \fBWeightedGraph\fP< T > graph, T start, T end)\fR [static]\fP"
+
+.PP
+Implementation of the Floyd-Warshall Algorithm for Weighted Graphs\&. This algorithm is not efficient and varies heavily from the others by requiring the be used in terms of the adjacency matrix\&. Given an adjacency matrix, we go through N^3 times over vertices to get the smallest value between 2 vertices\&. After this, we trace back to start from our end point by grabbing the lowest possible value for that column in the matrix\&.
+
+.PP
+\fBSee also\fP
+.RS 4
+\fBWeightedGraph\fP 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIgraph\fP since this is an extension, graph would be where we call this function to run on that specific graph instance\&. 
+.br
+\fIstart\fP the starting vertex that we will begin the search from\&. 
+.br
+\fIend\fP the ending vertex that we are looking for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+a list format of the found path between start and end, if any 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fInotnull\fP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Mazes from the source code\&.

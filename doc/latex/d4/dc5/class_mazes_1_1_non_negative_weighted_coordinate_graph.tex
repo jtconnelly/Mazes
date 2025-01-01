@@ -1,0 +1,49 @@
+\doxysection{Mazes.\+Non\+Negative\+Weighted\+Coordinate\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_mazes_1_1_non_negative_weighted_coordinate_graph}{}\label{class_mazes_1_1_non_negative_weighted_coordinate_graph}\index{Mazes.NonNegativeWeightedCoordinateGraph$<$ T $>$@{Mazes.NonNegativeWeightedCoordinateGraph$<$ T $>$}}
+
+
+a graph implementation based on the Non\+Negative\+Weighted\+Graph Class using the coordinate struct.  
+
+
+Inheritance diagram for Mazes.\+Non\+Negative\+Weighted\+Coordinate\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d4/dc5/class_mazes_1_1_non_negative_weighted_coordinate_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Graph.\+Non\+Negative\+Weighted\+Graph$<$ Coordinate2\+D$<$ T $>$ $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_a51f7fcae2dff549f2d830162fa348208}{Non\+Negative\+Weighted\+Graph}} ()
+\item 
+new void \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_ad4a56e5939f30398d069dd696855018d}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_a593e1c0485b04eec9014e069fce5613d}{Add\+Edge}} (T u, T v, uint weight)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+new List$<$ Key\+Value\+Pair$<$ T, uint $>$ $>$ \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_ab969a2aa066f3b8f2eb3225e77c0c426}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph}{Graph.\+Non\+Negative\+Weighted\+Graph$<$ Coordinate2\+D$<$ T $>$ $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+new readonly Dictionary$<$ T, List$<$ Key\+Value\+Pair$<$ T, uint $>$ $>$ $>$ \mbox{\hyperlink{class_graph_1_1_non_negative_weighted_graph_a894ca2ecfb8b3fc88aad5a78cb7766da}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a graph implementation based on the Non\+Negative\+Weighted\+Graph Class using the coordinate struct. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_non_negative_weighted_graph_a51f7fcae2dff549f2d830162fa348208}{Non\+Negative\+Weighted\+Graph} 
+
+\doxylink{struct_mazes_1_1_coordinate2_d}{Coordinate2D} Since this implementation is based on the base \doxylink{class_graph_1_1_non_negative_weighted_graph_a51f7fcae2dff549f2d830162fa348208}{Non\+Negative\+Weighted\+Graph} class, we can use this with any of the iterations of \doxylink{class_graph_1_1_non_negative_weighted_graph_a51f7fcae2dff549f2d830162fa348208}{Non\+Negative\+Weighted\+Graph}. 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em INumber$<$T$>$}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_maze_8cs}{Maze.\+cs}}\end{DoxyCompactItemize}

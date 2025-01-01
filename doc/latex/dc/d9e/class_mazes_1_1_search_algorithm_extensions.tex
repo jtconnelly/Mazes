@@ -1,0 +1,134 @@
+\doxysection{Mazes.\+Search\+Algorithm\+Extensions Class Reference}
+\hypertarget{class_mazes_1_1_search_algorithm_extensions}{}\label{class_mazes_1_1_search_algorithm_extensions}\index{Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}}
+
+
+An extension class for \doxylink{class_mazes_1_1_graph}{Graph} that implements searching algorithms as well as their complementary paths.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static ISet$<$ T $>$ \mbox{\hyperlink{class_mazes_1_1_search_algorithm_extensions_a0a184fa9730ec4ade8f02b12fd45ad6a}{DFS$<$ T $>$}} (this \mbox{\hyperlink{class_mazes_1_1_graph}{Graph}}$<$ T $>$ graph, T start)
+\begin{DoxyCompactList}\small\item\em A Depth First Search Algorithm. \end{DoxyCompactList}\item 
+static ISet$<$ T $>$ \mbox{\hyperlink{class_mazes_1_1_search_algorithm_extensions_af39ecea3fbc15c479cac9e04e33bbbad}{BFS$<$ T $>$}} (this \mbox{\hyperlink{class_mazes_1_1_graph}{Graph}}$<$ T $>$ graph, T start)
+\begin{DoxyCompactList}\small\item\em A Breadth First Search Algorithm. \end{DoxyCompactList}\item 
+static List$<$ T $>$ \mbox{\hyperlink{class_mazes_1_1_search_algorithm_extensions_a293cac5bab3720a9a136f38e2b13cb44}{BFSPath$<$ T $>$}} (this \mbox{\hyperlink{class_mazes_1_1_graph}{Graph}}$<$ T $>$ graph, T start, T end)
+\begin{DoxyCompactList}\small\item\em A Breadth First Search Algorithm to find a path between two vertices. \end{DoxyCompactList}\item 
+static List$<$ T $>$ \mbox{\hyperlink{class_mazes_1_1_search_algorithm_extensions_ab3c0bab9811565995d873c1a59b52c57}{DFSPath$<$ T $>$}} (this \mbox{\hyperlink{class_mazes_1_1_graph}{Graph}}$<$ T $>$ graph, T start, T end)
+\begin{DoxyCompactList}\small\item\em A Depth First Search Algorithm to find a path between two vertices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An extension class for \doxylink{class_mazes_1_1_graph}{Graph} that implements searching algorithms as well as their complementary paths. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_mazes_1_1_graph}{Graph} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mazes_1_1_search_algorithm_extensions_af39ecea3fbc15c479cac9e04e33bbbad}\index{Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}!BFS$<$ T $>$@{BFS$<$ T $>$}}
+\index{BFS$<$ T $>$@{BFS$<$ T $>$}!Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{BFS$<$ T $>$()}{BFS< T >()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_search_algorithm_extensions_af39ecea3fbc15c479cac9e04e33bbbad} 
+static ISet$<$ T $>$ Mazes.\+Search\+Algorithm\+Extensions.\+BFS$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_mazes_1_1_graph}{Graph}}$<$ T $>$}]{graph}{, }\item[{T}]{start}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A Breadth First Search Algorithm. 
+
+Given a starting value, discover the possible paths and routes available from the edges. In the algorithm, we use a queue to pop the first found neighbor, meaning we will follow incrementally work through our closest neighbors before moving on to their neighbors. \begin{DoxySeeAlso}{See also}
+\doxylink{class_mazes_1_1_search_algorithm_extensions_a0a184fa9730ec4ade8f02b12fd45ad6a}{DFS$<$\+T$>$(this Graph$<$\+T$>$ graph, T start)} 
+
+\doxylink{class_mazes_1_1_search_algorithm_extensions_a293cac5bab3720a9a136f38e2b13cb44}{BFSPath$<$\+T$>$(this Graph$<$\+T$>$ graph, T start, T end)} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a set of all vertexes found that have a path from start. 
+\end{DoxyReturn}
+\Hypertarget{class_mazes_1_1_search_algorithm_extensions_a293cac5bab3720a9a136f38e2b13cb44}\index{Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}!BFSPath$<$ T $>$@{BFSPath$<$ T $>$}}
+\index{BFSPath$<$ T $>$@{BFSPath$<$ T $>$}!Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{BFSPath$<$ T $>$()}{BFSPath< T >()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_search_algorithm_extensions_a293cac5bab3720a9a136f38e2b13cb44} 
+static List$<$ T $>$ Mazes.\+Search\+Algorithm\+Extensions.\+BFSPath$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_mazes_1_1_graph}{Graph}}$<$ T $>$}]{graph}{, }\item[{T}]{start}{, }\item[{T}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A Breadth First Search Algorithm to find a path between two vertices. 
+
+Given a starting value, discover the possible paths and routes available from the edges until we find a path between the start and end. \begin{DoxySeeAlso}{See also}
+\doxylink{class_mazes_1_1_search_algorithm_extensions_af39ecea3fbc15c479cac9e04e33bbbad}{BFS$<$\+T$>$(this Graph$<$\+T$>$ graph, T start)} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+{\em end} & the ending vertex that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list format of the found path between start and end. 
+\end{DoxyReturn}
+\Hypertarget{class_mazes_1_1_search_algorithm_extensions_a0a184fa9730ec4ade8f02b12fd45ad6a}\index{Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}!DFS$<$ T $>$@{DFS$<$ T $>$}}
+\index{DFS$<$ T $>$@{DFS$<$ T $>$}!Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{DFS$<$ T $>$()}{DFS< T >()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_search_algorithm_extensions_a0a184fa9730ec4ade8f02b12fd45ad6a} 
+static ISet$<$ T $>$ Mazes.\+Search\+Algorithm\+Extensions.\+DFS$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_mazes_1_1_graph}{Graph}}$<$ T $>$}]{graph}{, }\item[{T}]{start}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A Depth First Search Algorithm. 
+
+Given a starting value, discover the possible paths and routes available from the edges. In the algorithm, we use a stack to pop the last found neighbor, meaning we will follow a path to it\textquotesingle{}s entirety before we go back up to a previous path. \begin{DoxySeeAlso}{See also}
+\doxylink{class_mazes_1_1_search_algorithm_extensions_af39ecea3fbc15c479cac9e04e33bbbad}{BFS$<$\+T$>$(this Graph$<$\+T$>$ graph, T start)} 
+
+\doxylink{class_mazes_1_1_search_algorithm_extensions_ab3c0bab9811565995d873c1a59b52c57}{DFSPath$<$\+T$>$(this Graph$<$\+T$>$ graph, T start, T end)} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a set of all vertexes found that have a path from start. 
+\end{DoxyReturn}
+\Hypertarget{class_mazes_1_1_search_algorithm_extensions_ab3c0bab9811565995d873c1a59b52c57}\index{Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}!DFSPath$<$ T $>$@{DFSPath$<$ T $>$}}
+\index{DFSPath$<$ T $>$@{DFSPath$<$ T $>$}!Mazes.SearchAlgorithmExtensions@{Mazes.SearchAlgorithmExtensions}}
+\doxysubsubsection{\texorpdfstring{DFSPath$<$ T $>$()}{DFSPath< T >()}}
+{\footnotesize\ttfamily \label{class_mazes_1_1_search_algorithm_extensions_ab3c0bab9811565995d873c1a59b52c57} 
+static List$<$ T $>$ Mazes.\+Search\+Algorithm\+Extensions.\+DFSPath$<$ T $>$ (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{class_mazes_1_1_graph}{Graph}}$<$ T $>$}]{graph}{, }\item[{T}]{start}{, }\item[{T}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A Depth First Search Algorithm to find a path between two vertices. 
+
+Given a starting value, discover the possible paths and routes available from the edges until we find a path between the start and end. \begin{DoxySeeAlso}{See also}
+\doxylink{class_mazes_1_1_search_algorithm_extensions_a0a184fa9730ec4ade8f02b12fd45ad6a}{DFS$<$\+T$>$(this Graph$<$\+T$>$ graph, T start)} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & since this is an extension, graph would be where we call this function to run on that specific graph instance. \\
+\hline
+{\em start} & the starting vertex that we will begin the search from. \\
+\hline
+{\em end} & the ending vertex that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list format of the found path between start and end. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_search_algorithm_extensions_8cs}{Search\+Algorithm\+Extensions.\+cs}}\end{DoxyCompactItemize}

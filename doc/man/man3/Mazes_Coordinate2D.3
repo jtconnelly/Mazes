@@ -1,0 +1,90 @@
+.TH "Mazes.Coordinate2D< T >" 3 "Version 1.0" "Mazes" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mazes.Coordinate2D< T > \- A Coordinate Struct for representing 2D Coordinates\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBEquals\fP (\fBCoordinate2D\fP< T > other)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (Object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBoperator==\fP (\fBCoordinate2D\fP< T > person1, \fBCoordinate2D\fP< T > person2)"
+.br
+.ti -1c
+.RI "static bool \fBoperator!=\fP (\fBCoordinate2D\fP< T > person1, \fBCoordinate2D\fP< T > person2)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "T \fBx\fP\fR [get, set]\fP"
+.br
+.ti -1c
+.RI "T \fBy\fP\fR [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A Coordinate Struct for representing 2D Coordinates\&. 
+
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP value representing an x coordinate 
+.br
+\fIy\fP value representing an y coordinate This Coordinate struct will be used in new graph implementations and for the A* algorithm implementations 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBCoordinateGraph\fP 
+
+.PP
+\fBWeightedCoordinateGraph\fP 
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIINumber<T>\fP
+.SH "Member Function Documentation"
+.PP 
+.SS "bool \fBMazes\&.Coordinate2D\fP< T >\&.Equals (\fBCoordinate2D\fP< T > other)"
+
+.SS "override bool \fBMazes\&.Coordinate2D\fP< T >\&.Equals (Object obj)"
+
+.SS "override int \fBMazes\&.Coordinate2D\fP< T >\&.GetHashCode ()"
+
+.SS "static bool \fBMazes\&.Coordinate2D\fP< T >\&.operator!= (\fBCoordinate2D\fP< T > person1, \fBCoordinate2D\fP< T > person2)\fR [static]\fP"
+
+.SS "static bool \fBMazes\&.Coordinate2D\fP< T >\&.operator== (\fBCoordinate2D\fP< T > person1, \fBCoordinate2D\fP< T > person2)\fR [static]\fP"
+
+.SH "Property Documentation"
+.PP 
+.SS "T \fBMazes\&.Coordinate2D\fP< T >\&.x\fR [get]\fP, \fR [set]\fP"
+
+.SS "T \fBMazes\&.Coordinate2D\fP< T >\&.y\fR [get]\fP, \fR [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Mazes from the source code\&.

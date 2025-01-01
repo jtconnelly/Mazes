@@ -1,0 +1,78 @@
+\doxysection{Graph.\+Weighted\+Directional\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_graph_1_1_weighted_directional_graph}{}\label{class_graph_1_1_weighted_directional_graph}\index{Graph.WeightedDirectionalGraph$<$ T $>$@{Graph.WeightedDirectionalGraph$<$ T $>$}}
+
+
+a weighted directional graph implementation based on the \doxylink{class_graph_1_1_graph}{Graph} Class.  
+
+
+Inheritance diagram for Graph.\+Weighted\+Directional\+Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d6/dca/class_graph_1_1_weighted_directional_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+new void \mbox{\hyperlink{class_graph_1_1_weighted_directional_graph_afc225e944e6c80f023d0c4c69590c3ee}{Add\+Edge}} (T u, T v, int weight)
+\begin{DoxyCompactList}\small\item\em Add an Edge from u to v, but not v to u. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Graph.\+Weighted\+Graph$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_1_1_weighted_graph_a84a2a6d611013f232131af95d469546c}{Weighted\+Graph}} ()
+\item 
+void \mbox{\hyperlink{class_graph_1_1_weighted_graph_ac22ca1894363b960614d1bf7a1a9e814}{Add\+Vertex}} (T v)
+\begin{DoxyCompactList}\small\item\em Add a vertex to the map, default initialized with no neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_1_1_weighted_graph_a0913dc44c735050aaf63d6e29b98fc13}{Add\+Edge}} (T u, T v, int weight)
+\begin{DoxyCompactList}\small\item\em Add an Edge between u to v. \end{DoxyCompactList}\item 
+List$<$ Key\+Value\+Pair$<$ T, int $>$ $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a794a15a1f1ae6d8e6bdabb55d08264d5}{get\+Neighbors}} (T v)
+\begin{DoxyCompactList}\small\item\em Get the list of neighbors of a given vertex. \end{DoxyCompactList}\item 
+IEnumerator$<$ T $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a2f7287e43f3510afa6b588ddce6fd981}{Get\+Enumerator}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_graph_1_1_weighted_graph}{Graph.\+Weighted\+Graph$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+readonly Dictionary$<$ T, List$<$ Key\+Value\+Pair$<$ T, int $>$ $>$ $>$ \mbox{\hyperlink{class_graph_1_1_weighted_graph_a9157dd497ca8429aee389587db3fbd3d}{\+\_\+neighbors}}
+\begin{DoxyCompactList}\small\item\em a Dictionary type where the key is a vertex and the value is it\textquotesingle{}s list of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a weighted directional graph implementation based on the \doxylink{class_graph_1_1_graph}{Graph} Class. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_graph_1_1_directional_graph}{Directional\+Graph} 
+
+\doxylink{class_graph_1_1_weighted_graph}{Weighted\+Graph} A directional graph implementation does not reciprocate an edge between vertices, thus giving a direction in which a vertex is a neighbor to another. The rest of the implementation would stay the same. 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em notnull}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graph_1_1_weighted_directional_graph_afc225e944e6c80f023d0c4c69590c3ee}\index{Graph.WeightedDirectionalGraph$<$ T $>$@{Graph.WeightedDirectionalGraph$<$ T $>$}!AddEdge@{AddEdge}}
+\index{AddEdge@{AddEdge}!Graph.WeightedDirectionalGraph$<$ T $>$@{Graph.WeightedDirectionalGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddEdge()}{AddEdge()}}
+{\footnotesize\ttfamily \label{class_graph_1_1_weighted_directional_graph_afc225e944e6c80f023d0c4c69590c3ee} 
+new void \mbox{\hyperlink{class_graph_1_1_weighted_directional_graph}{Graph.\+Weighted\+Directional\+Graph}}$<$ T $>$.Add\+Edge (\begin{DoxyParamCaption}\item[{T}]{u}{, }\item[{T}]{v}{, }\item[{int}]{weight}{}\end{DoxyParamCaption})}
+
+
+
+Add an Edge from u to v, but not v to u. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & the vertex that you wish to add an edge to. \\
+\hline
+{\em v} & the vertex that will have an edge pointed to it. \\
+\hline
+{\em weight} & the given weight of said edge. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_graphs_8cs}{Graphs.\+cs}}\end{DoxyCompactItemize}
