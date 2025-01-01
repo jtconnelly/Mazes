@@ -100,7 +100,7 @@ namespace Graph
             Dictionary<T, T> parent = new Dictionary<T, T>();
             found.Add(start);
             waiting.Push(start);
-            parent.Add(start, default);
+            parent.Add(start, default(T));
             while (waiting.Count > 0)
             {
                 T v = waiting.Pop();
@@ -113,12 +113,15 @@ namespace Graph
                     {
                         found.Add(u);
                         waiting.Push(u);
-                        parent.Add(u, v);
+                        if (!parent.TryAdd(u, v))
+                        {
+                            parent[u] = v;
+                        }
                     }
                     if (u.Equals(end))
                     {
                         List<T> path = new List<T>();
-                        while (!u.Equals(default))
+                        while (!u.Equals(default(T)))
                         {
                             path.Add(u);
                             u = parent[u];
@@ -151,7 +154,7 @@ namespace Graph
             Dictionary<T, T> parent = new Dictionary<T, T>();
             found.Add(start);
             waiting.Enqueue(start);
-            parent.Add(start, default);
+            parent.Add(start, default(T));
             while (waiting.Count > 0)
             {
                 T v = waiting.Dequeue();
@@ -164,12 +167,15 @@ namespace Graph
                     {
                         found.Add(u);
                         waiting.Enqueue(u);
-                        parent.Add(u, v);
+                        if (!parent.TryAdd(u, v))
+                        {
+                            parent[u] = v;
+                        }
                     }
                     if (u.Equals(end))
                     {
                         List<T> path = new List<T>();
-                        while (!u.Equals(default))
+                        while (!u.Equals(default(T)))
                         {
                             path.Add(u);
                             u = parent[u];
@@ -219,7 +225,7 @@ namespace Graph
          * This is used in every shortest path function to give us back the path
          * 
          * @returns a list of each visited vertex from start to end
-         * @param parent dictionary of each value and their corresponding parent, where the start will have a default value for null
+         * @param parent dictionary of each value and their corresponding parent, where the start will have a default(T) value for null
          * @param the end point we want to reach
          **/
         internal static List<T> Path<T>(Dictionary<T, T> parent, T end)
@@ -227,7 +233,7 @@ namespace Graph
             List<T> ans = new List<T>();
             ans.Add(end);
             T u = parent[end];
-            while (!u.Equals(default))
+            while (!u.Equals(default(T)))
             {
                 ans.Add(u);
                 u = parent[u];
@@ -275,7 +281,7 @@ namespace Graph
             //First step: Add start
             found.Add(start);
             waiting.Enqueue(start, 0);
-            parent.Add(start, default);
+            parent.Add(start, default(T));
 
             // Distance Building Step: Go through every node that we can possibly reach from start, even if we find end
             while (waiting.Count > 0)
@@ -287,14 +293,20 @@ namespace Graph
                     var neighbor = neighbors[i];
                     if (neighbor.Value + distances[v] < distances[neighbor.Key])
                     {
-                        parent.Add(neighbor.Key, v); // If this would actually be the shortest path
+                        if (!parent.TryAdd(neighbor.Key, v)) // If this would actually be the shortest path
+                        {
+                            parent[neighbor.Key] = v;
+                        }
                         distances[neighbor.Key] = neighbor.Value + distances[v]; // updating the distances
                     }
                     if (!found.Contains(neighbor.Key))
                     {
                         found.Add(neighbor.Key);
                         waiting.Enqueue(neighbor.Key, neighbor.Value);
-                        parent.Add(neighbor.Key, v);
+                        if (!parent.TryAdd(neighbor.Key, v))
+                        {
+                            parent[neighbor.Key] = v;
+                        }
                     }
                 }
             }
@@ -347,7 +359,7 @@ namespace Graph
             //First step: Add start
             found.Add(start);
             waiting.Enqueue(start, 0);
-            parent.Add(start, default);
+            parent.Add(start, default(T));
 
             // Distance Building Step: Go through every node that we can possibly reach from start, even if we find end
             while (waiting.Count > 0)
@@ -359,14 +371,20 @@ namespace Graph
                     var neighbor = neighbors[i];
                     if (1 + distances[v] < distances[neighbor])
                     {
-                        parent.Add(neighbor, v); // If this would actually be the shortest path
+                        if (parent.TryAdd(neighbor, v)) // If this would actually be the shortest path
+                        {
+                            parent[neighbor] = v;
+                        }
                         distances[neighbor] = 1 + distances[v]; // updating the distances
                     }
                     if (!found.Contains(neighbor))
                     {
                         found.Add(neighbor);
                         waiting.Enqueue(neighbor, distances[neighbor]);
-                        parent.Add(neighbor, v);
+                        if (parent.TryAdd(neighbor, v))
+                        {
+                            parent[neighbor] = v;
+                        }
                     }
                 }
             }
@@ -410,7 +428,7 @@ namespace Graph
 
             distances[start] = 0;
             Dictionary<T, T> parent = new Dictionary<T, T>(); // How we will trace back from a node for the path
-            parent.Add(start, default);
+            parent.Add(start, default(T));
 
             for (int i = 0; i < graph.Count(); ++i)
             {
@@ -421,7 +439,10 @@ namespace Graph
                         if (neighbor.Value + distances[node] < distances[neighbor.Key])
                         {
                             distances[neighbor.Key] = neighbor.Value + distances[node];
-                            parent.Add(neighbor.Key, node);
+                            if (!parent.TryAdd(neighbor.Key, node))
+                            {
+                                parent[neighbor.Key] = node;
+                            }
                         }
                     }
                 }
@@ -486,7 +507,7 @@ namespace Graph
                 throw new ArgumentNullException(nameof(graph));
             }
             Dictionary<T, T> parent = new Dictionary<T, T>(); // How we will trace back from a node for the path
-            parent.Add(start, default);
+            parent.Add(start, default(T));
             var asMatrix = GetAdjacencyMatrix(graph);
             for (int k = 0; k < asMatrix.Count(); k++)
             {
@@ -573,7 +594,7 @@ namespace Graph
             //First step: Add start
             found.Add(start);
             waiting.Enqueue(start, 0);
-            parent.Add(start, default);
+            parent.Add(start, default(Mazes.Coordinate2D<T>));
 
             // Distance Building Step: Go through every node that we can possibly reach from start, even if we find end
             while (waiting.Count > 0)
@@ -589,7 +610,10 @@ namespace Graph
                     var neighbor = neighbors[i];
                     if (neighbor.Value + distances[v] < distances[neighbor.Key])
                     {
-                        parent.Add(neighbor.Key, v); // If this would actually be the shortest path
+                        if (!parent.TryAdd(neighbor.Key, v)) // If this would actually be the shortest path
+                        {
+                            parent[neighbor.Key] = v;
+                        }
                         distances[neighbor.Key] = neighbor.Value + distances[v]; // updating the distances
                     }
                     if (!found.Contains(neighbor.Key))
@@ -597,7 +621,10 @@ namespace Graph
                         found.Add(neighbor.Key);
                         // Really where the main difference starts: We add the heuristic to the value in waiting to change the priority so we focus on getting to the end faster
                         waiting.Enqueue(neighbor.Key, neighbor.Value + Convert.ToUInt32(heuristic(neighbor.Key.x, neighbor.Key.y, end.x, end.y)));
-                        parent.Add(neighbor.Key, v);
+                        if (!parent.TryAdd(neighbor.Key, v))
+                        { 
+                            parent[neighbor.Key] = v; 
+                        }
                     }
                 }
             }
@@ -647,7 +674,7 @@ namespace Graph
             //First step: Add start
             found.Add(start);
             waiting.Enqueue(start, 0);
-            parent.Add(start, default);
+            parent.Add(start, default(Mazes.Coordinate2D<T>));
 
             // Distance Building Step: Go through every node that we can possibly reach from start, even if we find end
             while (waiting.Count > 0)
@@ -663,7 +690,10 @@ namespace Graph
                     var neighbor = neighbors[i];
                     if (1 + distances[v] < distances[neighbor])
                     {
-                        parent.Add(neighbor, v); // If this would actually be the shortest path
+                        if (!parent.TryAdd(neighbor, v)) // If this would actually be the shortest path
+                        {
+                            parent[neighbor] = v;
+                        }
                         distances[neighbor] = 1 + distances[v]; // updating the distances
                     }
                     if (!found.Contains(neighbor))
@@ -671,7 +701,10 @@ namespace Graph
                         found.Add(neighbor);
                         // Really where the main difference starts: We add the heuristic to the value in waiting to change the priority so we focus on getting to the end faster
                         waiting.Enqueue(neighbor, 1 + Convert.ToUInt32(heuristic(neighbor.x, neighbor.y, end.x, end.y)));
-                        parent.Add(neighbor, v);
+                        if (!parent.TryAdd(neighbor, v))
+                        { 
+                            parent[neighbor] = v; 
+                        }
                     }
                 }
             }
