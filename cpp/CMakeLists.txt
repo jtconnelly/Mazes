@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.28)
+
+project(Mazes)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+MESSAGE("VCPKG_ROOT: $ENV{VCPKG_ROOT}")
+MESSAGE("VCPKG_ROOT_DIR: $ENV{VCPKG_ROOT_DIR}")
+
+include("$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+
+set(CMAKE_OUTPUT_DIR ${CMAKE_SOURCE_DIR}/build/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_OUTPUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_OUTPUT_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_OUTPUT_DIR})
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+add_subdirectory(Mazes)
+add_subdirectory(Mazes_gtest)
+
+set(CPACK_OUTPUT_FILE_PREFIX packages)
