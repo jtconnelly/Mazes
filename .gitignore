@@ -6,3 +6,4 @@ obj/
 .idea/
 build/
 vcpkg_installed/
+.ccls*/
