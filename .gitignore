@@ -7,3 +7,6 @@ obj/
 build/
 vcpkg_installed/
 .ccls*/
+target/
+Cargo.lock
+.vscode/
