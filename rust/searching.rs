@@ -20,7 +20,7 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
             if path.iter().find(|&x| *x == node).is_none()
             {
                 path.push(node.clone());
-                for neighbor in self.get_neighbors(node).unwrap()
+                for neighbor in self.get_neighbors(&node).unwrap()
                 {
                     stack.push(neighbor.clone());
                 }
@@ -48,7 +48,7 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
             if path.iter().find(|&x| *x == node).is_none()
             {
                 path.push(node.clone());
-                for neighbor in self.get_neighbors(node).unwrap()
+                for neighbor in self.get_neighbors(&node).unwrap()
                 {
                     stack.push(neighbor.clone());
                 }
