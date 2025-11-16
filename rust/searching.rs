@@ -2,10 +2,10 @@ use crate::graph::{Graph, Graphing};
 use std::hash::Hash;
 pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
 {
-    fn bfs(&self, start: T, end: T) -> Vec<T>{
+    fn bfs(&self, start: &T, end: &T) -> Vec<T>{
         let mut path: Vec<T> = Vec::new();
-        let mut stack: Vec<T> = Vec::new();
-        stack.push(start.clone());
+        let mut stack: Vec<&T> = Vec::new();
+        stack.push(start);
 
         while !stack.is_empty()
         {
@@ -13,16 +13,16 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
 
             if node == end
             {
-                path.push(node);
+                path.push(node.clone());
                 return path;
             }
 
-            if path.iter().find(|&x| *x == node).is_none()
+            if path.iter().find(|&x| *x == *node).is_none()
             {
                 path.push(node.clone());
-                for neighbor in self.get_neighbors(&node).unwrap()
+                for neighbor in self.get_neighbors(node).unwrap()
                 {
-                    stack.push(neighbor.clone());
+                    stack.push(neighbor);
                 }
             }
         }
@@ -30,10 +30,10 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
         return Vec::new();
     }
 
-    fn dfs(&self, start: T, end: T) -> Vec<T>{
+    fn dfs(&self, start: &T, end: &T) -> Vec<T>{
         let mut path: Vec<T> = Vec::new();
-        let mut stack: Vec<T> = Vec::new();
-        stack.push(start.clone());
+        let mut stack: Vec<&T> = Vec::new();
+        stack.push(start);
 
         while !stack.is_empty()
         {
@@ -41,16 +41,16 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
 
             if node == end
             {
-                path.push(node);
+                path.push(node.clone());
                 return path;
             }
 
-            if path.iter().find(|&x| *x == node).is_none()
+            if path.iter().find(|&x| *x == *node).is_none()
             {
                 path.push(node.clone());
-                for neighbor in self.get_neighbors(&node).unwrap()
+                for neighbor in self.get_neighbors(node).unwrap()
                 {
-                    stack.push(neighbor.clone());
+                    stack.push(neighbor);
                 }
             }
         }

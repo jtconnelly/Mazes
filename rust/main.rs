@@ -8,7 +8,7 @@ fn test_searching(graph: &Graph<char>){
     println!("test_searching function");
 
     println!("DFS");
-    let dfs_res = graph.dfs('a', 'd');
+    let dfs_res = graph.dfs(&'a', &'d');
     assert!(!dfs_res.is_empty());
     let dfs_str = format!("{:?}", dfs_res);
     println!("DFS Result: {dfs_str}");
@@ -16,7 +16,7 @@ fn test_searching(graph: &Graph<char>){
     println!();
 
     println!("BFS");
-    let bfs_res = graph.bfs('a', 'd');
+    let bfs_res = graph.bfs(&'a', &'d');
     assert!(!bfs_res.is_empty());
     let bfs_str = format!("{:?}", bfs_res);
     println!("BFS Result: {bfs_str}");
