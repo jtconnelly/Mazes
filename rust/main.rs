@@ -3,6 +3,7 @@ use crate::searching::SearchAlgorithm;
 
 mod graph;
 mod searching;
+mod digraph;
 
 fn test_searching(graph: &Graph<char>){
     println!("test_searching function");

@@ -12,7 +12,7 @@ pub trait Graphing<T>
 
 pub struct Graph<T>
 {
-    neighbors: HashMap<T, Vec<T>>
+    pub(crate) neighbors: HashMap<T, Vec<T>>
 }
 
 impl<T> Graph<T>{
