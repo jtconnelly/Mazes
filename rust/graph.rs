@@ -1,3 +1,6 @@
+#![deny(clippy::redundant_clone)]
+#![deny(clippy::unwrap_used)]
+
 use std::collections::HashMap;
 use std::hash::Hash;
 
@@ -46,12 +49,16 @@ impl<T: Eq + Hash + Clone> Graphing<T> for Graph<T>{
 
     fn remove_edge(&mut self, a: &T, b: &T){
         if self.neighbors.contains_key(&a) && self.neighbors[&a].contains(&b){
-            let idx = self.neighbors.get_mut(&a).and_then(|l| l.iter().position(|v| *v == *b).clone()).unwrap();
-            self.neighbors.entry(a.clone()).and_modify(|l| { l.remove(idx); });
+            let idx = self.neighbors.get_mut(&a).and_then(|l| l.iter().position(|v| *v == *b).clone());
+            if let Some(i) = idx {
+                self.neighbors.entry(a.clone()).and_modify(|l| { l.remove(i); });
+            }
         }
         if self.neighbors.contains_key(&b) && self.neighbors[&b].contains(&a){
-            let idx = self.neighbors.get_mut(&b).and_then(|l| return l.iter().position(|v| *v == *a).clone()).unwrap();
-            self.neighbors.entry(b.clone()).and_modify(|l| { l.remove(idx); });
+            let idx = self.neighbors.get_mut(&b).and_then(|l| return l.iter().position(|v| *v == *a).clone());
+            if let Some(i) = idx{
+                self.neighbors.entry(b.clone()).and_modify(|l| { l.remove(i); });
+            }
         }
     }
 
@@ -121,9 +128,9 @@ mod tests{
         graph.add_edge(&'a', &'c');
         graph.add_edge(&'a', &'d');
         graph.add_edge(&'a', &'b');
-        assert_eq!(*graph.get_neighbors(&'a').unwrap(), vec!['b', 'c', 'd']);
+        assert_eq!(*graph.get_neighbors(&'a').expect("Failed to get neighbors for a"), vec!['b', 'c', 'd']);
         graph.remove_edge(&'a', &'b');
-        assert_eq!(*graph.get_neighbors(&'a').unwrap(), vec!['c', 'd']);
+        assert_eq!(*graph.get_neighbors(&'a').expect("Failed to get neighbors for a"), vec!['c', 'd']);
         assert!(true, "get_neighbors failed!");
     }
 }

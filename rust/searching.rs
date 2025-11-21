@@ -1,3 +1,6 @@
+#![deny(clippy::redundant_clone)]
+#![deny(clippy::unwrap_used)]
+
 use crate::graph::{Graph, Graphing};
 use std::hash::Hash;
 pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
@@ -20,9 +23,11 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
             if path.iter().find(|&x| *x == *node).is_none()
             {
                 path.push(node.clone());
-                for neighbor in self.get_neighbors(node).unwrap()
+                if let Some(neighbors) = self.get_neighbors(node)
                 {
-                    stack.push(neighbor);
+                    for neighbor in neighbors{
+                        stack.push(neighbor);
+                    }  
                 }
             }
         }
@@ -48,9 +53,11 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
             if path.iter().find(|&x| *x == *node).is_none()
             {
                 path.push(node.clone());
-                for neighbor in self.get_neighbors(node).unwrap()
+                if let Some(neighbors) = self.get_neighbors(node)
                 {
-                    stack.push(neighbor);
+                    for neighbor in neighbors{
+                        stack.push(neighbor);
+                    }
                 }
             }
         }

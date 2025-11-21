@@ -1,3 +1,6 @@
+#![deny(clippy::redundant_clone)]
+#![deny(clippy::unwrap_used)]
+
 use crate::graph::{Graph, Graphing};
 use std::hash::Hash;
 
@@ -34,8 +37,10 @@ impl<T: Eq + Hash + Clone> Graphing<T> for Digraph<T>{
 
     fn remove_edge(&mut self, a: &T, b: &T){
         if self.base_graph.neighbors.contains_key(&a) && self.base_graph.neighbors[&a].contains(&b){
-            let idx = self.base_graph.neighbors.get_mut(&a).and_then(|l| l.iter().position(|v| *v == *b).clone()).unwrap();
-            self.base_graph.neighbors.entry(a.clone()).and_modify(|l| { l.remove(idx); });
+            let idx = self.base_graph.neighbors.get_mut(&a).and_then(|l| l.iter().position(|v| *v == *b).clone());
+            if let Some(i) = idx{
+                self.base_graph.neighbors.entry(a.clone()).and_modify(|l| { l.remove(i); });
+            }
         }
 
     }
@@ -106,9 +111,9 @@ mod tests{
         graph.add_edge(&'a', &'c');
         graph.add_edge(&'a', &'d');
         graph.add_edge(&'a', &'b');
-        assert_eq!(*graph.get_neighbors(&'a').unwrap(), vec!['b', 'c', 'd']);
+        assert_eq!(*graph.get_neighbors(&'a').expect("Failed to get neighbors for a"), vec!['b', 'c', 'd']);
         graph.remove_edge(&'a', &'b');
-        assert_eq!(*graph.get_neighbors(&'a').unwrap(), vec!['c', 'd']);
+        assert_eq!(*graph.get_neighbors(&'a').expect("Failed to get neighbors for a"), vec!['c', 'd']);
         assert!(true, "get_neighbors failed!");
     }
 }

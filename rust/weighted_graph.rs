@@ -1,0 +1,1 @@
+type weighted = Pair<T, i32>;

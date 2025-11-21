@@ -42,9 +42,9 @@ fn test_graph(){
     graph.add_edge(&'a',& 'c');
     graph.add_edge(&'a', &'d');
     graph.add_edge(&'a', &'b');
-    assert_eq!(*graph.get_neighbors(&'a').unwrap(), vec!['b', 'c', 'd']);
+    assert_eq!(*graph.get_neighbors(&'a').expect("Failed to get neighbors for a"), vec!['b', 'c', 'd']);
     graph.remove_edge(&'a', &'b');
-    assert_eq!(*graph.get_neighbors(&'a').unwrap(), vec!['c', 'd']);
+    assert_eq!(*graph.get_neighbors(&'a').expect("Failed to get neighbors for a"), vec!['c', 'd']);
     assert!(true, "get_neighbors failed!");
     test_searching(&graph);
 }
