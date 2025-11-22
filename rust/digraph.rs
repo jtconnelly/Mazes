@@ -5,7 +5,7 @@ use crate::graph::{Graph, Graphing};
 use std::hash::Hash;
 
 
-struct Digraph<T>
+pub struct Digraph<T>
 {
     base_graph: Graph<T>
 }

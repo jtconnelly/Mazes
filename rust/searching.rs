@@ -2,6 +2,7 @@
 #![deny(clippy::unwrap_used)]
 
 use crate::graph::{Graph, Graphing};
+use crate::digraph::Digraph;
 use std::hash::Hash;
 pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
 {
@@ -67,11 +68,12 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
 }
 
 impl<T: Clone + Eq + Hash> SearchAlgorithm<T> for Graph<T>{}
+impl<T: Clone + Eq + Hash> SearchAlgorithm<T> for Digraph<T>{}
 
 pub trait GreedySearch<T>
 {
-    fn dijkstra(&self) -> Vec<T>;
-    fn bellman_ford(&self) -> Vec<T>;
-    fn floyd_warshall(&self) -> Vec<T>;
-    fn a_star(&self) -> Vec<T>;
+    fn dijkstra(&self, start: &T, end: &T) -> Vec<T>;
+    fn bellman_ford(&self, start: &T, end: &T) -> Vec<T>;
+    fn floyd_warshall(&self, start: &T, end: &T) -> Vec<T>;
+    fn a_star(&self, start: &T, end: &T) -> Vec<T>;
 }
