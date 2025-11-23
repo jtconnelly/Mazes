@@ -16,7 +16,8 @@ impl<T> Digraph<T>{
     }
 }
 
-impl<T: Eq + Hash + Clone> Graphing<T> for Digraph<T>{
+impl<T: Eq + Hash + Clone + Into<T>> Graphing<T> for Digraph<T>{
+    type Neighbor = T;
     fn add_vertex(&mut self, vert: &T){
         self.base_graph.add_vertex(vert);
     }

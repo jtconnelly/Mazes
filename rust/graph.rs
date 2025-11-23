@@ -6,11 +6,26 @@ use std::hash::Hash;
 
 pub trait Graphing<T>
 {
+    type Neighbor;
     fn add_vertex(&mut self, vert: &T);
     fn remove_vertex(&mut self, vert: &T);
-    fn add_edge(&mut self, a: &T, b: &T);
+    fn add_edge(&mut self, a: &T, b: &Self::Neighbor);
     fn remove_edge(&mut self, a: &T, b: &T);
-    fn get_neighbors(&self, v: &T) -> Option<&Vec<T>>;
+    fn get_neighbors(&self, v: &T) -> Option<&Vec<Self::Neighbor>>;
+}
+
+/// Helper trait to extract the underlying node `&T` from a neighbour type.
+///
+/// This allows search algorithms to work with both unweighted graphs (where
+/// `Neighbor = T`) and weighted graphs (where `Neighbor = Pair<T, i32>`).
+pub trait NeighborNode<T> {
+    fn node(&self) -> &T;
+}
+
+impl<T> NeighborNode<T> for T {
+    fn node(&self) -> &T {
+        self
+    }
 }
 
 pub struct Graph<T>
@@ -25,6 +40,7 @@ impl<T> Graph<T>{
 }
 
 impl<T: Eq + Hash + Clone> Graphing<T> for Graph<T>{
+    type Neighbor = T;
     fn add_vertex(&mut self, vert: &T){
         if !self.neighbors.contains_key(&vert)
         {

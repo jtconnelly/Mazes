@@ -1,10 +1,13 @@
 #![deny(clippy::redundant_clone)]
 #![deny(clippy::unwrap_used)]
 
-use crate::graph::{Graph, Graphing};
+use crate::graph::{Graph, Graphing, NeighborNode};
 use crate::digraph::Digraph;
+use crate::weighted_graph::{WeightedDigraph, WeightedGraph};
 use std::hash::Hash;
 pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
+where
+    <Self as Graphing<T>>::Neighbor: NeighborNode<T>,
 {
     fn bfs(&self, start: &T, end: &T) -> Vec<T>{
         let mut path: Vec<T> = Vec::new();
@@ -26,9 +29,10 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
                 path.push(node.clone());
                 if let Some(neighbors) = self.get_neighbors(node)
                 {
-                    for neighbor in neighbors{
-                        stack.push(neighbor);
-                    }  
+                    for neighbor in neighbors {
+                        let neigh_node: &T = NeighborNode::node(neighbor);
+                        stack.push(neigh_node);
+                    }
                 }
             }
         }
@@ -56,8 +60,9 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
                 path.push(node.clone());
                 if let Some(neighbors) = self.get_neighbors(node)
                 {
-                    for neighbor in neighbors{
-                        stack.push(neighbor);
+                    for neighbor in neighbors {
+                        let neigh_node: &T = NeighborNode::node(neighbor);
+                        stack.push(neigh_node);
                     }
                 }
             }
@@ -69,6 +74,8 @@ pub trait SearchAlgorithm<T: Clone + Eq + Hash>: Graphing<T>
 
 impl<T: Clone + Eq + Hash> SearchAlgorithm<T> for Graph<T>{}
 impl<T: Clone + Eq + Hash> SearchAlgorithm<T> for Digraph<T>{}
+impl<T: Clone + Eq + Hash> SearchAlgorithm<T> for WeightedGraph<T>{}
+impl<T: Clone + Eq + Hash> SearchAlgorithm<T> for WeightedDigraph<T>{}
 
 pub trait GreedySearch<T>
 {
