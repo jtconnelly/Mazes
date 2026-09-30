@@ -1,12 +1,15 @@
+#pragma once
+
+#include "igraph.h"
 namespace Boots
 {
-    template <typename T>
-    class iGraph
-    {
-        public:
-            virtual ~iGraph() = default;
-            virtual void addEdge(T to, T from) = 0;
-            virtual void removeEdge(T to, T from) = 0;
-            virtual bool hasEdge(T to, T from) const = 0;
-    };
+  template <typename T>
+  class Graph: public iGraph<T>
+  {
+    public:
+      virtual void addVertex(T vert) override;
+      virtual void addEdge(T to, T from) override;
+      virtual void removeEdge(T to, T from) override;
+      virtual bool hasEdge(T to, T from) const override;
+  };
 }
