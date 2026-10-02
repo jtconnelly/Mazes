@@ -10,3 +10,4 @@ vcpkg_installed/
 target/
 Cargo.lock
 .vscode/
+.ccls
