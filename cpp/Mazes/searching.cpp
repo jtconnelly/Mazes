@@ -2,8 +2,8 @@
 
 namespace Boots
 {
-    template <typename T>
-    const std::vector<T> GraphSearch<T>::dfs(const iGraph<T>& graph, const T& start)
+    template <typename T, DerivesFromGraph G>
+    const std::vector<T> dfs(const G& graph, const T& start)
     {
         std::vector<T> visited;
         std::vector<T> stack;
@@ -27,8 +27,8 @@ namespace Boots
         return visited;
     }
     
-    template <typename T>
-    const std::vector<T> GraphSearch<T>::bfs(const iGraph<T>& graph, const T& start)
+    template <typename T, DerivesFromGraph G>
+    const std::vector<T> bfs(const G& graph, const T& start)
     {
         std::vector<T> visited;
         std::vector<T> queue;
@@ -52,8 +52,8 @@ namespace Boots
         return visited;
     }
 
-    template <typename T>
-    const std::vector<T> GraphSearch<T>::dfsPath(const iGraph<T>& graph, const T& start, const T& end)
+    template <typename T, DerivesFromGraph G>
+    const std::vector<T> dfsPath(const G& graph, const T& start, const T& end)
     {
         std::vector<T> path;
         std::vector<T> stack;
@@ -83,8 +83,8 @@ namespace Boots
         return {};
     }
 
-    template <typename T>
-    const std::vector<T> GraphSearch<T>::bfsPath(const iGraph<T>& graph, const T& start, const T& end)
+    template <typename T, DerivesFromGraph G>
+    const std::vector<T> bfsPath(const G& graph, const T& start, const T& end)
     {
         std::vector<T> path;
         std::vector<T> queue;
@@ -115,7 +115,7 @@ namespace Boots
     }
 
     template <typename T>
-    const std::vector<T> GraphSearch<T>::dijkstra(const iWeightedGraph<T>& graph, const T& start, const T& end)
+    const std::vector<T> dijkstra(const iWeightedGraph<T>& graph, const T& start, const T& end)
     {
         std::vector<T> path;
         std::vector<T> queue;
@@ -146,7 +146,7 @@ namespace Boots
     }
 
     template <typename T>
-    const std::vector<T> GraphSearch<T>::aStar(const iWeightedGraph<T>& graph, const T& start, const T& end, const std::function<double(const T&, const T&)>& heuristic)
+    const std::vector<T> aStar(const iWeightedGraph<T>& graph, const T& start, const T& end, const std::function<double(const T&, const T&)>& heuristic)
     {
         std::vector<T> path;
         std::vector<T> queue;
@@ -177,7 +177,7 @@ namespace Boots
     }
 
     template <typename T>
-    const std::vector<T> GraphSearch<T>::bellmanFord(const iWeightedGraph<T>& graph, const T& start, const T& end)
+    const std::vector<T> bellmanFord(const iWeightedGraph<T>& graph, const T& start, const T& end)
     {
         std::vector<T> path;
         std::vector<T> queue;
@@ -208,7 +208,7 @@ namespace Boots
     }
 
     template <typename T>
-    const std::vector<T> GraphSearch<T>::floydWarshall(const iWeightedGraph<T>& graph, const T& start, const T& end)
+    const std::vector<T> floydWarshall(const iWeightedGraph<T>& graph, const T& start, const T& end)
     {
         std::vector<T> path;
         std::vector<T> queue;

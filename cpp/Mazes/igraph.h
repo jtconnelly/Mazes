@@ -5,8 +5,10 @@
 
 namespace Boots
 {
+    struct GraphTag{};
+
     template <typename T>
-    class iGraph
+    class iGraph : public GraphTag
     {
         public:
             virtual ~iGraph() = default;
@@ -22,8 +24,9 @@ namespace Boots
             };
     };
 
+    struct WeightedGraphTag{};
     template <typename T, typename Weight=size_t>
-    class iWeightedGraph
+    class iWeightedGraph : public WeightedGraphTag
     {
         public:
             virtual ~iWeightedGraph() = default;
